@@ -1,0 +1,40 @@
+{
+  "name": "Weather",
+  "version": "0.0.1",
+  "description": "Weather application",
+  "main": "index.js",
+  "author": "R1ON",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --mode development --colors --progress",
+    "build": "webpack --mode production --colors --progress",
+    "eslint": "eslint src/"
+  },
+  "devDependencies": {
+    "babel-core": "6.25.0",
+    "babel-loader": "7.1.4",
+    "babel-preset-env": "1.6.0",
+    "css-loader": "0.28.10",
+    "file-loader": "1.1.11",
+    "html-loader": "0.5.5",
+    "html-webpack-plugin": "3.0.6",
+    "image-webpack-loader": "4.2.0",
+    "lodash": "4.17.4",
+    "mini-css-extract-plugin": "0.4.0",
+    "node-sass": "4.8.2",
+    "resolve-url-loader": "2.3.0",
+    "sass-loader": "6.0.7",
+    "style-loader": "0.20.3",
+    "uglifyjs-webpack-plugin": "1.2.3",
+    "webpack": "4.8.1",
+    "webpack-cli": "2.1.3",
+    "webpack-dev-server": "3.1.4",
+    "yargs": "11.0.0"
+  },
+  "dependencies": {
+    "babel-preset-react": "6.24.1",
+    "react": "16.4.1",
+    "react-dom": "16.4.1",
+    "react-favicon": "0.0.14"
+  }
+}
