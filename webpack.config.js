@@ -1,5 +1,5 @@
 const path = require('path');
-const argv = require('yargs').argv;
+const { argv } = require('yargs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -10,7 +10,7 @@ const distPath = path.join(__dirname, '/public');
 
 const config = {
   entry: {
-    main: './source/scripts/project/index.js'
+    main: './source/scripts/index.js'
   },
   output: {
     filename: 'bundle.js',
@@ -43,8 +43,8 @@ const config = {
             minimize: isProduction
           }
         },
-        'sass-loader',
-        'resolve-url-loader'
+        'resolve-url-loader',
+        'sass-loader'
       ]
     }, {
       test: /\.(gif|png|jpe?g|svg|ico)$/i,
@@ -61,8 +61,8 @@ const config = {
             quality: 70
           }
         }
-      },
-      ],
+      }
+      ]
     }, {
       test: /\.(eot|svg|ttf|woff|woff2)$/,
       use: {
@@ -70,7 +70,7 @@ const config = {
         options: {
           name: 'fonts/[name][hash].[ext]'
         }
-      },
+      }
     }]
   },
   plugins: [
@@ -92,10 +92,10 @@ const config = {
             warnings: false,
             drop_console: true,
             unsafe: true
-          },
-        },
-      }),
-    ],
+          }
+        }
+      })
+    ]
   } : {},
   devServer: {
     contentBase: distPath,
