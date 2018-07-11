@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import PageContainer from './containers/page';
+import pageReducers from './reducers';
+
 class Page extends Component {
   componentWillReceiveProps() {
     window.scrollTo(0, 0);
@@ -8,12 +11,13 @@ class Page extends Component {
   render() {
     return (
       <div className="header">
-        test
+        <PageContainer />
       </div>
     );
   }
 }
 
 export {
-  Page as default
+  Page as default,
+  pageReducers
 };

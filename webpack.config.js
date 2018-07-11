@@ -33,7 +33,7 @@ const config = {
         }
       }]
     }, {
-      test: /\.sass$/,
+      test: /\.(css|sass)$/,
       exclude: /node_modules/,
       use: [
         isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
@@ -61,8 +61,7 @@ const config = {
             quality: 70
           }
         }
-      }
-      ]
+      }]
     }, {
       test: /\.(eot|svg|ttf|woff|woff2)$/,
       use: {
@@ -75,8 +74,8 @@ const config = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css'
+      filename: '[name].(css|sass)',
+      chunkFilename: '[id].(css|sass)'
     }),
     new HtmlWebpackPlugin({
       template: './source/views/index.html'
@@ -101,7 +100,8 @@ const config = {
     contentBase: distPath,
     port: 9000,
     compress: true,
-    open: true
+    open: false,
+    inline: false // true - включает HMR
   }
 };
 module.exports = config;
