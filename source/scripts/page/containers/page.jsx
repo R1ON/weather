@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import Form from './form';
 import { getWeatherDataAction } from '../actions/weatherAction';
 
 class PageContainer extends Component {
@@ -13,19 +14,19 @@ class PageContainer extends Component {
   }
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <div>
-        test
+        <Form />
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  const { response } = state.pageReducers.getWeatherDataReducer;
+const mapStateToProps = ({ pageReducers: { getWeatherDataReducer }, form }) => {
+  const { response } = getWeatherDataReducer;
 
-  return { ...response };
+  return { ...response, form };
 };
 
 const mapDispatchToProps = dispatch => ({
