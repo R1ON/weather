@@ -9,7 +9,7 @@ import Page from './page';
 import { store } from './store';
 
 import FaviconPath from '../images/favicon.ico';
-import '../styles/project/index.sass';
+import '../styles/index.sass';
 
 ReactDOM.render(
   <div>

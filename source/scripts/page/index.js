@@ -10,9 +10,7 @@ class Page extends Component {
 
   render() {
     return (
-      <div className="header">
-        <PageContainer />
-      </div>
+      <PageContainer />
     );
   }
 }

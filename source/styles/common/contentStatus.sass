@@ -1,0 +1,51 @@
+.content-status-overlay
+  &:after
+    content: ''
+    display: block
+    position: fixed
+    top: 0
+    left: 0
+    height: 100vh
+    width: 100vw
+    background: rgba(0, 0, 0, .5)
+    z-index: 100
+
+.content-status
+  position: absolute
+  left: 50%
+  top: 50%
+  z-index: 101
+  transform: translate(-50%, -50%)
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-direction: column
+  border-radius: 3px
+  height: 100px
+  width: 150px
+  &-spinner
+    margin: 0
+    padding: 0
+    display: block
+    &::before
+      content: ''
+      display: block
+      border-left: 2px white solid
+      border-top: 2px white solid
+      border-radius: 50%
+      animation: rotate .8s linear infinite
+      height: 40px
+      width: 40px
+
+@keyframes rotate
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(360deg)
+
+.content-status-message
+  font-family: AmaticR, sans-serif
+  font-size: 4rem
+  margin-bottom: 10px
+  color: white
+  white-space: nowrap
