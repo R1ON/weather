@@ -58,14 +58,14 @@ class PageContainer extends Component {
     console.log(this.props);
 
     return (
-      <div className="header" style={{ background }}>
+      <header style={{ background }}>
         <ContentStatus status={status} message={message}>
           <Form
             getWeatherDataByCity={getWeatherDataByCity}
             formContainer={formContainer}
           />
         </ContentStatus>
-      </div>
+      </header>
     );
   }
 }

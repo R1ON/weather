@@ -63,7 +63,7 @@ const config = {
         }
       }]
     }, {
-      test: /\.(eot|svg|ttf|woff|woff2)$/,
+      test: /\.(otf|eot|svg|ttf|woff|woff2)$/,
       use: {
         loader: 'file-loader',
         options: {

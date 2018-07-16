@@ -1,51 +1,68 @@
-.content-status-overlay
-  &:after
+.content-status
+  &__overlay::after
     content: ''
+    height: 100vh
+    width: 100vw
     display: block
     position: fixed
     top: 0
     left: 0
-    height: 100vh
-    width: 100vw
     background: rgba(0, 0, 0, .5)
     z-index: 100
+    animation: opacityVisible .5s ease
+  &__overlay:not([data-status="LOADING"])::after
+    animation: opacityHidden .5s ease
+    animation-delay: 2.5s
+  &__info
+    position: absolute
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%)
+    z-index: 101
 
-.content-status
-  position: absolute
-  left: 50%
-  top: 50%
-  z-index: 101
-  transform: translate(-50%, -50%)
+@keyframes opacityVisible
+  0%
+    opacity: 0
+  100%
+    opacity: 1
+
+@keyframes opacityHidden
+  0%
+    opacity: 1
+  100%
+    opacity: 0
+
+.info-status
   display: flex
   align-items: center
   justify-content: center
   flex-direction: column
-  border-radius: 3px
-  height: 100px
-  width: 150px
-  &-spinner
-    margin: 0
-    padding: 0
-    display: block
-    &::before
-      content: ''
-      display: block
-      border-left: 2px white solid
-      border-top: 2px white solid
-      border-radius: 50%
-      animation: rotate .8s linear infinite
-      height: 40px
-      width: 40px
+  &__message
+    font-family: AmaticR, sans-serif
+    font-size: 4rem
+    margin-bottom: 10px
+    white-space: nowrap
+    color: white
+    animation: 3s ease messageAppearance
+  &__message[data-status="LOADING"]
+    animation: none
+  &__mark
+    width: 100px
 
-@keyframes rotate
+@keyframes messageAppearance
   0%
-    transform: rotate(0deg)
+    transform: translateY(-50px)
+    opacity: 0
+    clip-path: polygon(100% 0, 100% 20%, 0 100%, 0 80%)
+  20%
+    transform: translateY(0)
+    opacity: 1
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 25%)
+  80%
+    transform: translateY(0)
+    opacity: 1
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 25%)
   100%
-    transform: rotate(360deg)
-
-.content-status-message
-  font-family: AmaticR, sans-serif
-  font-size: 4rem
-  margin-bottom: 10px
-  color: white
-  white-space: nowrap
+    transform: translateY(50px)
+    opacity: 0
+    clip-path: polygon(100% 0, 100% -0%, 0 100%, 0 100%)
