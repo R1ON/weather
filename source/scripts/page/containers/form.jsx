@@ -27,13 +27,11 @@ class FormContainer extends Component {
 
   render() {
     return (
-      <div>
-        <Form onSubmit={this.submitForm}>
-          <Field name="inputSearchWeather" component={CustomInput} type="input" placeholder="enter city" />
+      <Form onSubmit={this.submitForm}>
+        <Field name="inputSearchWeather" component={CustomInput} type="input" placeholder="enter city" />
 
-          <button className="modal-footer-submit">Найти погоду</button>
-        </Form>
-      </div>
+        <button className="modal-footer-submit">Найти погоду</button>
+      </Form>
     );
   }
 }

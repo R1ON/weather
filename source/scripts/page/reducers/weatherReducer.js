@@ -1,10 +1,13 @@
 import {
   GET_WEATHER_DATA,
-  PENDING_WEATHER_DATA,
+  PENDING_WEATHER_DATA
+} from '../../constants/types';
+
+import {
   SUCCESS_CODE,
   MESSAGE_LOADING,
   MESSAGE_SUCCESS
-} from '../../constants/page';
+} from '../../constants/settingsPage';
 
 import {
   STATUS_LOADING,
@@ -42,11 +45,14 @@ export function getWeatherDataReducer(state = initialState, { type, response }) 
         weatherData: code === SUCCESS_CODE ? response : null
       };
 
-    default:
+    case STATUS_DEFAULT:
       return {
         ...state,
-        status: STATUS_DEFAULT,
-        message: null
+        message: null,
+        status: STATUS_DEFAULT
       };
+
+    default:
+      return state;
   }
 }

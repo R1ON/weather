@@ -1,4 +1,5 @@
-import { GET_WEATHER_DATA, PENDING_WEATHER_DATA } from '../../constants/page';
+import { GET_WEATHER_DATA, PENDING_WEATHER_DATA } from '../../constants/types';
+import { DISPATCH_DEFAULT_TIME } from '../../constants/settingsPage';
 import { STATUS_DEFAULT } from '../../constants/status';
 
 import weatherSource from '../../sources/weatherSource';
@@ -9,11 +10,11 @@ function weatherStatus(promise, dispatch) {
   promise
     .then(({ data }) => {
       dispatch({ type: GET_WEATHER_DATA, response: data });
-      setTimeout(() => dispatch({ type: STATUS_DEFAULT }), 3000);
+      setTimeout(() => dispatch({ type: STATUS_DEFAULT }), DISPATCH_DEFAULT_TIME);
     })
     .catch(({ response: { data } }) => {
       dispatch({ type: GET_WEATHER_DATA, response: data });
-      setTimeout(() => dispatch({ type: STATUS_DEFAULT }), 3000);
+      setTimeout(() => dispatch({ type: STATUS_DEFAULT }), DISPATCH_DEFAULT_TIME);
     });
 }
 

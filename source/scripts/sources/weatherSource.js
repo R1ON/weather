@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { APPID, URL_OPEN_WEATHER_MAP, LANGUAGE_DATA } from '../constants/page';
+import { APPID, URL_OPEN_WEATHER_MAP, LANGUAGE_DATA } from '../constants/settingsAPI';
 
 export default {
   getWeatherDataByCoords(latitude, longitude) {
