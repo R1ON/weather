@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 
 import Form from './form';
+import HeaderContainer from './headerContainer';
 
 import {
   getWeatherDataByCoordsAction,
@@ -19,9 +20,7 @@ class PageContainer extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      background: 'lightgray'
-    };
+    this.time = {};
   }
 
   componentWillMount() {
@@ -32,48 +31,42 @@ class PageContainer extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { weatherData } = nextProps;
-
-    // const dateTime = get(weatherData, 'dt', null);
+    const { weatherData, geonamesData } = nextProps;
 
     const nextCityName = get(nextProps.weatherData, 'name', null);
     const prevCityName = get(this.props.weatherData, 'name', null);
 
     if (prevCityName !== nextCityName) {
-      nextProps.getGeonamesByCoords(weatherData.coord.lat, weatherData.coord.lon);
+      const coords = get(weatherData, 'coord', null);
+
+      if (coords) {
+        nextProps.getGeonamesByCoords(coords.lat, coords.lon);
+      }
     }
 
-    // if (dateTime) {
-    //   еще одно условие, чтобы это не срабатывало каждый раз, когда попадет в стор
-    //   const time = moment.unix(dateTime).format(FORMAT_HOURS);
-    //
-    //   console.log(new Date().getTimezoneOffset()/60 * -1)  // -3
-    //
-    //   if (time >= 0 && time < 6) {
-    //     this.setState({ background: '#000000' });
-    //   } else if (time >= 6 && time < 12) {
-    //     this.setState({ background: '#fdffb5' });
-    //   } else if (time >= 12 && time < 18) {
-    //     this.setState({ background: '#99fff0' });
-    //   } else if (time >= 18 && time < 0) {
-    //     this.setState({ background: '#783074' });
-    //   }
-    // }
+    if (!geonamesData) {
+      const dateTime = get(weatherData, 'dt', null);
+
+      if (dateTime) {
+        this.time = moment.unix(dateTime).format(FORMAT_HOURS);
+      }
+    } else {
+      this.time = moment(geonamesData.time).format(FORMAT_HOURS);
+    }
   }
 
   render() {
     const { getWeatherDataByCity, form: { formContainer }, status, message } = this.props;
-    const { background } = this.state;
 
     return (
-      <header style={{ background }}>
+      <HeaderContainer time={this.time}>
         <ContentStatus status={status} message={message}>
           <Form
             getWeatherDataByCity={getWeatherDataByCity}
             formContainer={formContainer}
           />
         </ContentStatus>
-      </header>
+      </HeaderContainer>
     );
   }
 }

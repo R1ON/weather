@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import PageContainer from './containers/page';
+import PageContainer from './containers';
 import pageReducers from './reducers';
 
 class Page extends Component {

@@ -1,4 +1,4 @@
-import { GET_GEONAMES_DATA } from '../../constants/settingsPage';
+import { GET_GEONAMES_DATA } from '../../constants/types';
 
 const initialState = {
   geonamesData: null
