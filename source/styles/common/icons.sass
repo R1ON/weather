@@ -1,3 +1,16 @@
+.icon-success
+  &__circle,
+  &__slash,
+  &__back-slash
+    fill: none
+    stroke: #004d00
+    stroke-width: .2
+  &__circle
+    animation: iconCircle 3s ease
+  &__slash,
+  &__back-slash
+    animation: iconShash 3s ease
+
 .icon-error
   &__circle,
   &__slash,
@@ -6,11 +19,11 @@
     stroke: #8b0000
     stroke-width: .2
   &__circle
-    animation: iconErrorCircle 3s ease
+    animation: iconCircle 3s ease
   &__slash, &__back-slash
-    animation: iconErrorShash 3s ease
+    animation: iconShash 3s ease
 
-@keyframes iconErrorCircle
+@keyframes iconCircle
   0%
     stroke-dasharray: 0 13
   50%
@@ -24,7 +37,7 @@
     opacity: 0
     clip-path: polygon(100% 0, 100% -0%, 0 100%, 0 100%)
 
-@keyframes iconErrorShash
+@keyframes iconShash
   0%
     stroke-dasharray: 0 3
   50%
@@ -37,8 +50,6 @@
     transform: translateY(1px)
     opacity: 0
     clip-path: polygon(100% 0, 100% -0%, 0 100%, 0 100%)
-
-
 
 .icon-spinner
   &__back-circle
