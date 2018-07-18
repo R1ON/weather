@@ -20,7 +20,7 @@ class PageContainer extends Component {
   constructor(props) {
     super(props);
 
-    this.time = {};
+    this.time = -1;
   }
 
   componentWillMount() {
@@ -56,25 +56,22 @@ class PageContainer extends Component {
   }
 
   render() {
-    const { getWeatherDataByCity, form: { formContainer }, status, message } = this.props;
+    const { getWeatherDataByCity, status, message } = this.props;
 
     return (
       <HeaderContainer time={this.time}>
         <ContentStatus status={status} message={message}>
-          <Form
-            getWeatherDataByCity={getWeatherDataByCity}
-            formContainer={formContainer}
-          />
+          <Form getWeatherDataByCity={getWeatherDataByCity} />
         </ContentStatus>
       </HeaderContainer>
     );
   }
 }
 
-const mapStateToProps = ({ pageReducers, form }) => {
+const mapStateToProps = ({ pageReducers }) => {
   const { getWeatherDataReducer, getGeonamesDataReducer } = pageReducers;
 
-  return { ...getWeatherDataReducer, ...getGeonamesDataReducer, form };
+  return { ...getWeatherDataReducer, ...getGeonamesDataReducer };
 };
 
 const mapDispatchToProps = dispatch => ({

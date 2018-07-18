@@ -11,6 +11,7 @@ class HeaderContainer extends Component {
 
   componentWillReceiveProps({ time }) {
     if (time !== this.props.time) {
+      // делать анимацию после того, как статус стал DEFAULT
       if (time >= 0 && time < 6) {
         this.setState({ background: '#030f19' });
       } else if (time >= 6 && time < 12) {

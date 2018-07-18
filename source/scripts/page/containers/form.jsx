@@ -1,41 +1,51 @@
 import React, { Component } from 'react';
-import { Form, Field, reduxForm } from 'redux-form';
+import axios from 'axios';
 
-import { get } from '../../common/utils/lodash';
+import { URL_GEOCODE, FORMAT, LANGUAGE_DATA } from '../../constants/settingsAPI';
 
-import CustomInput from '../components/customInput';
-import validate from '../validation/searchWeatherForm';
+import AsyncSearchInput from '../components/asyncSearchInput';
 
 class FormContainer extends Component {
   constructor(props) {
     super(props);
 
     this.submitForm = this.submitForm.bind(this);
+    this.getCitiesByName = this.getCitiesByName.bind(this);
   }
 
-  submitForm(event) {
-    const { getWeatherDataByCity, formContainer } = this.props;
+  getCitiesByName(input) {
+    if (!input) return Promise.resolve({ options: [] });
 
-    const hasInputData = get(formContainer, 'values', null);
+    const promise = axios.get(URL_GEOCODE, {
+      params: {
+        format: FORMAT,
+        lang: LANGUAGE_DATA,
+        geocode: input
+      }
+    });
 
-    if (hasInputData) {
-      getWeatherDataByCity(hasInputData.inputSearchWeather);
-    }
+    return promise
+      .then(({ data }) => ({ options: data.response.GeoObjectCollection.featureMember.map(v => (v.GeoObject)) }));
+  }
 
-    event.preventDefault();
+  submitForm(value) {
+    return () => {
+      if (value) {
+        const { getWeatherDataByCity } = this.props;
+
+        getWeatherDataByCity(value);
+      }
+    };
   }
 
   render() {
     return (
-      <Form onSubmit={this.submitForm}>
-        <Field name="inputSearchWeather" component={CustomInput} type="input" placeholder="enter city" />
-
-        <button className="modal-footer-submit">Найти погоду</button>
-      </Form>
+      <AsyncSearchInput
+        submitForm={this.submitForm}
+        getCities={this.getCitiesByName}
+      />
     );
   }
 }
 
-export default reduxForm({
-  form: 'formContainer', validate
-})(FormContainer);
+export default FormContainer;

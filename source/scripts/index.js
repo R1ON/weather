@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import { Route, HashRouter } from 'react-router-dom';
 import Favicon from 'react-favicon';
 
+import 'react-select/dist/react-select.css';
+
 import { Provider } from 'react-redux';
 
 import Page from './page';

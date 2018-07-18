@@ -34,7 +34,6 @@ const config = {
       }]
     }, {
       test: /\.(css|sass)$/,
-      exclude: /node_modules/,
       use: [
         isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
         {
