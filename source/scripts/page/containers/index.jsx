@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 
 import Form from './form';
-import HeaderContainer from './headerContainer';
+import HeaderWrapper from './headerWrapper';
 
 import {
   getWeatherDataByCoordsAction,
@@ -11,6 +11,8 @@ import {
 } from '../actions/weatherActions';
 
 import { getGeonamesByCoordsAction } from '../actions/geonamesAction';
+
+import HeaderComponent from '../components/header';
 
 import { FORMAT_HOURS } from '../../constants/settingsPage';
 import ContentStatus from '../../common/components/contentStatus';
@@ -59,11 +61,12 @@ class PageContainer extends Component {
     const { getWeatherDataByCity, status, message } = this.props;
 
     return (
-      <HeaderContainer time={this.time}>
+      <HeaderWrapper time={this.time}>
         <ContentStatus status={status} message={message}>
           <Form getWeatherDataByCity={getWeatherDataByCity} />
+          <HeaderComponent />
         </ContentStatus>
-      </HeaderContainer>
+      </HeaderWrapper>
     );
   }
 }
@@ -76,7 +79,7 @@ const mapStateToProps = ({ pageReducers }) => {
 
 const mapDispatchToProps = dispatch => ({
   getWeatherDataByCoords: (latitude, longitude) => dispatch(getWeatherDataByCoordsAction(latitude, longitude)),
-  getWeatherDataByCity: city => dispatch(getWeatherDataByCityAction(city)),
+  getWeatherDataByCity: (city, countryCode) => dispatch(getWeatherDataByCityAction(city, countryCode)),
   getGeonamesByCoords: (latitude, longitude) => dispatch(getGeonamesByCoordsAction(latitude, longitude))
 });
 

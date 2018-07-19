@@ -33,7 +33,7 @@ class FormContainer extends Component {
       if (value) {
         const { getWeatherDataByCity } = this.props;
 
-        getWeatherDataByCity(value);
+        getWeatherDataByCity(value.name, value.metaDataProperty.GeocoderMetaData.Address.country_code);
       }
     };
   }

@@ -26,9 +26,9 @@ export function getWeatherDataByCoordsAction(latitude, longitude) {
   };
 }
 
-export function getWeatherDataByCityAction(city) {
+export function getWeatherDataByCityAction(city, countryCode) {
   return (dispatch) => {
-    const promise = weatherSource.getWeatherDataByCity(city);
+    const promise = weatherSource.getWeatherDataByCity(city, countryCode);
 
     weatherStatus(promise, dispatch);
   };

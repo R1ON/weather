@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Async } from 'react-select';
 
-import { get } from '../../common/utils/lodash';
-
 class AsyncSearchInput extends Component {
   constructor(props) {
     super(props);
@@ -34,8 +32,6 @@ class AsyncSearchInput extends Component {
     const { value } = this.state;
     const { getCities, submitForm } = this.props;
 
-    const cityName = get(value, 'name', null);
-
     return (
       <div>
         <Async
@@ -49,7 +45,7 @@ class AsyncSearchInput extends Component {
           optionRenderer={this.renderOption}
           valueRenderer={this.renderValue}
         />
-        <button onClick={submitForm(cityName)} className="modal-footer-submit">Найти погоду</button>
+        <button onClick={submitForm(value)} className="modal-footer-submit">Найти погоду</button>
       </div>
     );
   }

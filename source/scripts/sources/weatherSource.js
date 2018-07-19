@@ -14,10 +14,10 @@ export default {
     });
   },
 
-  getWeatherDataByCity(city) {
+  getWeatherDataByCity(city, countryCode) {
     return axios.get(URL_OPEN_WEATHER_MAP, {
       params: {
-        q: city,
+        q: `${city},${countryCode}`,
         appid: APPID
       }
     });
