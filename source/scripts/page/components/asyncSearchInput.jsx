@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { Async } from 'react-select';
 
 class AsyncSearchInput extends Component {
@@ -33,8 +35,9 @@ class AsyncSearchInput extends Component {
     const { getCities, submitForm } = this.props;
 
     return (
-      <div>
+      <div className="header__form search-form">
         <Async
+          className="search-form__input"
           placeholder="Выберите город"
           searchPromptText="Начинайте вводить для поиска"
           loadingPlaceholder="Загрузка..."
@@ -45,10 +48,15 @@ class AsyncSearchInput extends Component {
           optionRenderer={this.renderOption}
           valueRenderer={this.renderValue}
         />
-        <button onClick={submitForm(value)} className="modal-footer-submit">Найти погоду</button>
+        <button onClick={submitForm(value)} className="search-form__button">Найти погоду</button>
       </div>
     );
   }
 }
+
+AsyncSearchInput.propTypes = {
+  getCities: PropTypes.func.isRequired,
+  submitForm: PropTypes.func.isRequired
+};
 
 export default AsyncSearchInput;

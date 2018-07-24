@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import axios from 'axios';
 
 import { URL_GEOCODE, FORMAT, LANGUAGE_DATA } from '../../constants/settingsAPI';
@@ -47,5 +49,9 @@ class FormContainer extends Component {
     );
   }
 }
+
+FormContainer.propTypes = {
+  getWeatherDataByCity: PropTypes.func.isRequired
+};
 
 export default FormContainer;

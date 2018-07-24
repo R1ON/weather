@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
 import moment from 'moment';
 
@@ -22,7 +24,7 @@ class PageContainer extends Component {
   constructor(props) {
     super(props);
 
-    this.time = -1;
+    this.time = '-1';
   }
 
   componentWillMount() {
@@ -33,7 +35,7 @@ class PageContainer extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { weatherData, geonamesData } = nextProps;
+    const { weatherData, geonamesData, getGeonamesByCoords } = nextProps;
 
     const nextCityName = get(nextProps.weatherData, 'name', null);
     const prevCityName = get(this.props.weatherData, 'name', null);
@@ -42,7 +44,7 @@ class PageContainer extends Component {
       const coords = get(weatherData, 'coord', null);
 
       if (coords) {
-        nextProps.getGeonamesByCoords(coords.lat, coords.lon);
+        getGeonamesByCoords(coords.lat, coords.lon);
       }
     }
 
@@ -61,15 +63,31 @@ class PageContainer extends Component {
     const { getWeatherDataByCity, status, message } = this.props;
 
     return (
-      <HeaderWrapper time={this.time}>
-        <ContentStatus status={status} message={message}>
-          <Form getWeatherDataByCity={getWeatherDataByCity} />
+      <ContentStatus status={status} message={message}>
+        <HeaderWrapper className="header" time={this.time}>
           <HeaderComponent />
-        </ContentStatus>
-      </HeaderWrapper>
+          <Form getWeatherDataByCity={getWeatherDataByCity} />
+        </HeaderWrapper>
+      </ContentStatus>
     );
   }
 }
+
+PageContainer.defaultProps = {
+  message: null,
+  weatherData: null,
+  geonamesData: null
+};
+
+PageContainer.propTypes = {
+  getWeatherDataByCity: PropTypes.func.isRequired,
+  getWeatherDataByCoords: PropTypes.func.isRequired,
+  getGeonamesByCoords: PropTypes.func.isRequired,
+  status: PropTypes.string.isRequired,
+  message: PropTypes.string,
+  weatherData: PropTypes.object,
+  geonamesData: PropTypes.object
+};
 
 const mapStateToProps = ({ pageReducers }) => {
   const { getWeatherDataReducer, getGeonamesDataReducer } = pageReducers;

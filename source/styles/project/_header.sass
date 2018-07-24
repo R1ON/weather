@@ -1,6 +1,84 @@
-header
-  height: 100vh
-  transition: 3s ease
+.header
+  height: 97vh
+  //transition: 3s ease
   display: grid
   align-items: end
-  justify-items: center
+  justify-items: start
+  &__form
+    //display: none
+    position: absolute
+    top: 0
+    left: 0
+  &__icons
+    display: grid
+    grid-template-columns: auto auto auto
+    align-items: end
+
+
+.search-form
+  &__input
+    width: 40vw
+    *
+      background: #222E3E !important
+      color: red !important
+
+.icon
+  fill: none
+  position: relative
+  z-index: 1
+  &__home
+    width: auto
+    height: 170px
+  &__left-tree
+    width: auto
+    height: 230px
+    left: 55px
+  &__right-tree
+    width: auto
+    height: 200px
+    left: -30px
+    z-index: 2
+
+.home
+  &__wall
+    fill: $home-wall
+  &__window
+    fill: $home-window
+    stroke: $home-roof
+    width: 10px
+    height: 16px
+  &__window-glare
+    fill: $home-glare
+  &__door
+    fill: $home-shadow
+    stroke: $home-roof
+  &__door-border
+    fill: none
+    stroke: $home-roof
+    stroke-width: 0.25
+    width: 11.75px
+    height: 10.75px
+  &__door-lock
+    fill: $home-roof
+  &__wall-roof
+    fill: $home-wall
+  &__trumpet
+    fill: $home-roof
+  &__roof-left
+    fill: $home-roof
+  &__roof-left-shadow
+    fill: $home-shadow
+  &__roof-right
+    fill: $home-roof
+  &__roof-right-shadow
+    fill: $home-shadow
+  &__foundation
+    fill: $home-shadow
+  &__threshold
+    fill: $home-roof
+
+.tree
+  &__leaf
+    fill: $tree-list
+  &__trunk
+    fill: $tree-stvol

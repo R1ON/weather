@@ -16,16 +16,14 @@ const ContentStatus = ({ status, message, children }) => {
   );
 
   return (
-    <div className="content-status">
-      <div data-status={status} className={classNames({ 'content-status__overlay': status !== STATUS_DEFAULT })}>
-        {children}
-        {status !== STATUS_DEFAULT && (
-          <div className="content-status__info info-status">
-            {message && <div className="info-status__message" data-status={status}>{message}</div>}
-            {status === STATUS_LOADING ? <div className="info-status__mark"> <SpinnerIcon /> </div> : iconAfterLoad}
-          </div>
-        )}
-      </div>
+    <div data-status={status} className={classNames('content-status', { 'content-status__overlay': status !== STATUS_DEFAULT })}>
+      {children}
+      {status !== STATUS_DEFAULT && (
+        <div className="content-status__info info-status">
+          {message && <div className="info-status__message" data-status={status}>{message}</div>}
+          {status === STATUS_LOADING ? <div className="info-status__mark"> <SpinnerIcon /> </div> : iconAfterLoad}
+        </div>
+      )}
     </div>
   );
 };

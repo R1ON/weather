@@ -97,7 +97,7 @@ const config = {
   } : {},
   devServer: {
     contentBase: distPath,
-    port: 9000,
+    port: 9001,
     compress: true,
     open: false,
     inline: false // true - включает HMR
