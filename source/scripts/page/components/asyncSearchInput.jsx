@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { Async } from 'react-select';
+import { Icon } from 'react-fa';
 
 class AsyncSearchInput extends Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class AsyncSearchInput extends Component {
     return (
       <div className="header__form search-form">
         <Async
+          onBlurResetsInput={false}
           className="search-form__input"
           placeholder="Выберите город"
           searchPromptText="Начинайте вводить для поиска"
@@ -48,7 +50,7 @@ class AsyncSearchInput extends Component {
           optionRenderer={this.renderOption}
           valueRenderer={this.renderValue}
         />
-        <button onClick={submitForm(value)} className="search-form__button">Найти погоду</button>
+        <Icon name="fas fa-search" onClick={submitForm(value)} className="search-form__button" />
       </div>
     );
   }

@@ -6,7 +6,7 @@ class HeaderContainer extends Component {
     super(props);
 
     this.state = {
-      background: '#3d9bdb'
+      background: '#eaeaea'
     };
   }
 

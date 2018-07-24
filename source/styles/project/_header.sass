@@ -1,26 +1,42 @@
 .header
-  height: 97vh
+  height: 100vh
   //transition: 3s ease
   display: grid
   align-items: end
   justify-items: start
   &__form
-    //display: none
-    position: absolute
-    top: 0
-    left: 0
+    align-self: start
+    width: 100vw
   &__icons
     display: grid
     grid-template-columns: auto auto auto
     align-items: end
 
-
 .search-form
+  display: grid
+  grid-template-columns: auto 40px
   &__input
-    width: 40vw
     *
-      background: #222E3E !important
-      color: red !important
+      color: #999999 !important
+    .Select-control
+      border: 0
+      box-shadow: none !important
+      border-radius: 0
+    .Select-menu-outer
+      width: calc(100% + 33px)
+      border: none
+      border-top: 1px solid #999999
+  &__button
+    align-self: center
+    cursor: pointer
+    padding: 11px
+    border: none
+    background: white
+    color: #999999
+    transition: .3s ease
+    &:hover
+      transition: .3s ease
+      color: #666666
 
 .icon
   fill: none
