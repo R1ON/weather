@@ -1,16 +1,11 @@
 .header
   height: 100vh
   //transition: 3s ease
-  display: grid
-  align-items: end
-  justify-items: start
   &__form
-    align-self: start
     width: 100vw
-  &__icons
-    display: grid
-    grid-template-columns: auto auto auto
-    align-items: end
+  &__scene
+    width: 0
+    height: 0
 
 .search-form
   display: grid
@@ -38,63 +33,138 @@
       transition: .3s ease
       color: #666666
 
-.icon
-  fill: none
-  position: relative
-  z-index: 1
-  &__home
+.scene-object
+  *
+    position: absolute
+    bottom: 145px
+  svg
     width: auto
-    height: 170px
-  &__left-tree
-    width: auto
-    height: 230px
-    left: 55px
-  &__right-tree
-    width: auto
+  &__sea-back
+    bottom: 0
+    height: 120px
+    width: 102vw
+    margin-left: -1vw
+    background: $sea-back
+    animation: infinite 3s linear backSea
+  &__sea-front
+    bottom: -12%
+    height: 150px
+    width: 102vw
+    margin-left: -1vw
+    background: $sea-front
+    animation: infinite 4s linear frontSea
+  &__ground
+    bottom: 0
+    margin-left: 7.5vw
+    border-top-left-radius: 20px
+    border-top-right-radius: 20px
+    height: 145px
+    width: 85vw
+    background: $ground
+  &__short-cloud-top,
+  &__short-cloud-bottom,
+  &__long-cloud-top,
+  &__long-cloud-bottom
+    bottom: 0
+    width: 100vw
     height: 200px
-    left: -30px
-    z-index: 2
+    background-repeat: repeat-x
+  &__short-cloud-top
+    top: 10vh
+    background-image: url(../images/shortCloud.svg)
+    animation: 15s floatingShortClouds linear infinite
+  &__short-cloud-bottom
+    top: 30vh
+    background-image: url(../images/shortCloud.svg)
+    animation: 25s floatingShortClouds linear infinite
+  &__long-cloud-top
+    top: 20vh
+    background-image: url(../images/longCloud.svg)
+    animation: 15s floatingLongClouds linear infinite
+  &__long-cloud-bottom
+    top: 40vh
+    background-image: url(../images/longCloud.svg)
+    animation: 25s floatingLongClouds linear infinite
+  &__gray-mountain-left
+    left: 10vw
+    height: 13vw
+  &__gray-mountain-right
+    right: 7vw
+    height: 18vw
+    transform: scale(-1, 1) skewX(10deg)
+  &__small-dark-mountain
+    left: 38vw
+    height: 7vw
+  &__big-dark-mountain
+    left: 45vw
+    height: 10vw
+  &__blue-montain-1
+    left: 30vw
+    height: 5vw
+  &__blue-montain-2
+    left: 21vw
+    height: 7vw
+  &__blue-montain-3
+    right: 27vw
+    height: 8vw
+    transform: scale(-1, 1)
+  &__blue-montain-4
+    right: 37vw
+    height: 5vw
+    transform: scale(-1, 1)
+  &__tree-1
+    left: 36.5vw
+    height: 3vw
+  &__tree-2
+    left: 38vw
+    height: 4vw
+  &__tree-3
+    left: 35vw
+    height: 4vw
+  &__tree-4
+    left: 33vw
+    height: 5vw
+  &__tree-5
+    left: 27vw
+    height: 4vw
+  &__tree-6
+    right: 35vw
+    height: 4vw
+  &__tree-7
+    right: 27vw
+    height: 4vw
+  &__tree-8
+    right: 25vw
+    height: 6vw
+  &__home
+    left: 50vw
+    height: 5vw
 
-.home
-  &__wall
-    fill: $home-wall
-  &__window
-    fill: $home-window
-    stroke: $home-roof
-    width: 10px
-    height: 16px
-  &__window-glare
-    fill: $home-glare
-  &__door
-    fill: $home-shadow
-    stroke: $home-roof
-  &__door-border
-    fill: none
-    stroke: $home-roof
-    stroke-width: 0.25
-    width: 11.75px
-    height: 10.75px
-  &__door-lock
-    fill: $home-roof
-  &__wall-roof
-    fill: $home-wall
-  &__trumpet
-    fill: $home-roof
-  &__roof-left
-    fill: $home-roof
-  &__roof-left-shadow
-    fill: $home-shadow
-  &__roof-right
-    fill: $home-roof
-  &__roof-right-shadow
-    fill: $home-shadow
-  &__foundation
-    fill: $home-shadow
-  &__threshold
-    fill: $home-roof
 
-.tree
-  &__leaf
-    fill: $tree-list
-  &__trunk
-    fill: $tree-stvol
+@keyframes backSea
+  0%
+    transform: rotate(0deg)
+  25%
+    transform: rotate(-1deg) translateY(5px)
+  75%
+    transform: rotate(1deg) translateY(-5px)
+  100%
+    transform: rotate(0deg)
+
+@keyframes frontSea
+  0%
+    transform: rotate(0deg)
+  25%
+    transform: rotate(2deg) translateY(5px)
+  75%
+    transform: rotate(-2deg) translateY(-5px)
+  100%
+    transform: rotate(0deg)
+
+@keyframes floatingLongClouds
+  100%
+    background-position-x: 44vw
+
+@keyframes floatingShortClouds
+  100%
+    background-position-x: 32.3vw

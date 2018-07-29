@@ -35,7 +35,7 @@ const config = {
     }, {
       test: /\.(css|sass)$/,
       use: [
-        isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
+        'style-loader',
         {
           loader: 'css-loader',
           options: {
@@ -46,11 +46,11 @@ const config = {
         'sass-loader'
       ]
     }, {
-      test: /\.(gif|png|jpe?g|svg|ico)$/i,
+      test: /\.(gif|png|jpe?g|ico)$/i,
       use: [{
         loader: 'file-loader',
         options: {
-          name: 'images/[name][hash].[ext]'
+          name: '/images/[name].[ext]'
         }
       }, {
         loader: 'image-webpack-loader',
@@ -62,21 +62,35 @@ const config = {
         }
       }]
     }, {
-      test: /\.(otf|eot|svg|ttf|woff|woff2)$/,
-      use: {
-        loader: 'file-loader',
-        options: {
-          name: 'fonts/[name][hash].[ext]'
+      test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      loader: 'url-loader?limit=10000&mimetype=application/font-woff',
+      options: {
+        name: 'fonts/[name].[ext]'
+      }
+    }, {
+      test: /\.svg$/,
+      loader: {
+        loader: 'url-loader',
+        query: {
+          limit: 2048,
+          name: 'images/[name].[ext]'
         }
+      }
+    }, {
+      test: /\.(otf|ttf|eot)$/,
+      loader: 'file-loader',
+      options: {
+        name: 'fonts/[name].[ext]'
       }
     }]
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].(css|sass)',
-      chunkFilename: '[id].(css|sass)'
+      filename: `${__dirname}/source/styles/[name].(css|sass)`,
+      chunkFilename: `${__dirname}/source/styles/[id].(css|sass)`
     }),
     new HtmlWebpackPlugin({
+      inject: 'body',
       template: './source/views/index.html'
     })
   ],
@@ -97,7 +111,7 @@ const config = {
   } : {},
   devServer: {
     contentBase: distPath,
-    port: 9001,
+    port: 9000,
     compress: true,
     open: false,
     inline: false // true - включает HMR
