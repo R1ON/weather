@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const { argv } = require('yargs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
@@ -85,6 +86,9 @@ const config = {
     }]
   },
   plugins: [
+    new webpack.PrefetchPlugin('react'),
+    new webpack.ContextReplacementPlugin(/moment[\\]locale$/, /ru/),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new MiniCssExtractPlugin({
       filename: `${__dirname}/source/styles/[name].(css|sass)`,
       chunkFilename: `${__dirname}/source/styles/[id].(css|sass)`

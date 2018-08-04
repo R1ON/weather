@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import { connect } from 'react-redux';
 import moment from 'moment';
 
 import Form from './form';
 import HeaderWrapper from './headerWrapper';
+
+import { get } from '../../common/utils/lodash';
+import ContentStatus from '../../common/components/contentStatus';
 
 import {
   getWeatherDataByCoordsAction,
@@ -16,17 +18,7 @@ import { getGeonamesByCoordsAction } from '../actions/geonamesAction';
 
 import HeaderComponent from '../components/header';
 
-import { FORMAT_HOURS } from '../../constants/settingsPage';
-import ContentStatus from '../../common/components/contentStatus';
-import { get } from '../../common/utils/lodash';
-
 class PageContainer extends Component {
-  constructor(props) {
-    super(props);
-
-    this.time = '-1';
-  }
-
   componentWillMount() {
     const { geolocation } = navigator;
     const { getWeatherDataByCoords } = this.props;
@@ -48,14 +40,16 @@ class PageContainer extends Component {
       }
     }
 
-    if (!geonamesData) {
+    if (!geonamesData && !nextCityName) {
       const dateTime = get(weatherData, 'dt', null);
 
       if (dateTime) {
-        this.time = moment.unix(dateTime).format(FORMAT_HOURS);
+        this.time = moment.unix(dateTime).toObject();
       }
-    } else {
-      this.time = moment(geonamesData.time).format(FORMAT_HOURS);
+    }
+
+    if (geonamesData) {
+      this.time = moment(geonamesData.time).toObject();
     }
   }
 
@@ -65,8 +59,8 @@ class PageContainer extends Component {
     return (
       <ContentStatus status={status} message={message}>
         <HeaderWrapper className="header" time={this.time}>
+          <HeaderComponent time={this.time} />
           <Form getWeatherDataByCity={getWeatherDataByCity} />
-          <HeaderComponent />
         </HeaderWrapper>
       </ContentStatus>
     );

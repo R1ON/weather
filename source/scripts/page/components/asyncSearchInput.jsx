@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { Async } from 'react-select';
-import { Icon } from 'react-fa';
 
 class AsyncSearchInput extends Component {
   constructor(props) {
@@ -16,32 +15,29 @@ class AsyncSearchInput extends Component {
   }
 
   updateValue(value) {
-    this.setState({ value });
+    this.props.submitForm(value);
   }
 
   renderOption(option) {
-    return (
-      <span>{option.name} - {option.description}</span>
-    );
+    return <span>{option.name} - {option.description}</span>;
   }
 
   renderValue(option) {
-    return (
-      <span>{option.name} {option.description}</span>
-    );
+    return <span>{option.name} - {option.description}</span>;
   }
 
   render() {
     const { value } = this.state;
-    const { getCities, submitForm } = this.props;
+    const { getCities } = this.props;
 
     return (
-      <div className="header__form search-form">
+      <div className="header__form">
         <Async
           onBlurResetsInput={false}
-          className="search-form__input"
+          onCloseResetsInput={false}
+          onSelectResetsInput={false}
           placeholder="Выберите город"
-          searchPromptText="Начинайте вводить для поиска"
+          searchPromptText="Начните вводить для поиска"
           loadingPlaceholder="Загрузка..."
           value={value}
           valueKey="name"
@@ -50,7 +46,6 @@ class AsyncSearchInput extends Component {
           optionRenderer={this.renderOption}
           valueRenderer={this.renderValue}
         />
-        <Icon name="fas fa-search" onClick={submitForm(value)} className="search-form__button" />
       </div>
     );
   }

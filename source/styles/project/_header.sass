@@ -3,35 +3,21 @@
   //transition: 3s ease
   &__form
     width: 100vw
+    *
+      box-shadow: none !important
+      color: #999999 !important
   &__scene
     width: 0
     height: 0
 
 .search-form
-  display: grid
-  grid-template-columns: auto 40px
-  &__input
-    *
-      color: #999999 !important
-    .Select-control
-      border: 0
-      box-shadow: none !important
-      border-radius: 0
-    .Select-menu-outer
-      width: calc(100% + 33px)
-      border: none
-      border-top: 1px solid #999999
-  &__button
-    align-self: center
-    cursor: pointer
-    padding: 11px
+  .Select-control
+    border: 0
+    box-shadow: none !important
+    border-radius: 0
+  .Select-menu-outer
     border: none
-    background: white
-    color: #999999
-    transition: .3s ease
-    &:hover
-      transition: .3s ease
-      color: #666666
+    border-top: 1px solid #999999
 
 .scene-object
   *
@@ -81,10 +67,6 @@
     top: 20vh
     background-image: url(../images/longCloud.svg)
     animation: 15s floatingLongClouds linear infinite
-  &__long-cloud-bottom
-    top: 40vh
-    background-image: url(../images/longCloud.svg)
-    animation: 25s floatingLongClouds linear infinite
   &__gray-mountain-left
     left: 10vw
     height: 13vw
@@ -139,6 +121,11 @@
   &__home
     left: 50vw
     height: 5vw
+  &__sun
+    height: 7vw
+    right: 50vw
+    transform-origin: right center
+    background: black
 
 
 @keyframes backSea
