@@ -21,11 +21,12 @@ class HeaderComponent extends Component {
   render() {
     const { time } = this.props;
 
-    // (time.hours - 6) потому что восход начинается в 6:00
-    // Необходимо получить количество секунд, минуя часы до восхода
-    // 240 - это количество секунд за 1 градус => узнаем текущий поворот
+    const sunrise = time && (SECONDS_PER_HOUR * time.sunrise.hours) + (SECONDS_PER_MINUTE * time.sunrise.minutes);
+    const sunset = time && (((SECONDS_PER_HOUR * time.sunset.hours) + (SECONDS_PER_MINUTE * time.sunset.minutes)) - sunrise);
+    const secondsPerDegree = sunset / 180 || 0;
+
     const degree = time ? (
-      ((SECONDS_PER_HOUR * (time.hours - 6)) + (SECONDS_PER_MINUTE * time.minutes) + time.seconds) / 240
+      (((SECONDS_PER_HOUR * time.hours) + (SECONDS_PER_MINUTE * time.minutes) + time.seconds) - sunrise) / secondsPerDegree
     ) : 0;
 
     return (
@@ -58,7 +59,7 @@ class HeaderComponent extends Component {
         {/*<Tree className="scene-object__tree-8" />*/}
         {/**/}
         {/*<Home className="scene-object__home" />*/}
-        <Sun className="scene-object__sun" degree={degree} />
+        <Sun className="scene-object__sun" degree={degree} secondsPerDegree={secondsPerDegree} />
       </div>
     );
   }

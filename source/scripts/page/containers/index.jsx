@@ -49,7 +49,11 @@ class PageContainer extends Component {
     }
 
     if (geonamesData) {
-      this.time = moment(geonamesData.time).toObject();
+      this.time = {
+        ...moment(geonamesData.time).toObject(),
+        sunrise: moment(geonamesData.sunrise).toObject(),
+        sunset: moment(geonamesData.sunset).toObject()
+      };
     }
   }
 
