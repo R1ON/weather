@@ -12,6 +12,7 @@
     "modules": "yarn install"
   },
   "devDependencies": {
+    "autoprefixer": "9.1.0",
     "babel-core": "6.25.0",
     "babel-loader": "7.1.4",
     "babel-preset-env": "1.6.0",
@@ -27,6 +28,7 @@
     "image-webpack-loader": "4.2.0",
     "mini-css-extract-plugin": "0.4.0",
     "node-sass": "4.8.2",
+    "postcss-loader": "2.1.6",
     "resolve-url-loader": "2.3.0",
     "sass-loader": "6.0.7",
     "style-loader": "0.20.3",

@@ -12,18 +12,26 @@ class Sun extends Component {
 
   componentWillUpdate({ degree, secondsPerDegree }) {
     if (!this.state.degree) {
-      this.setState({ degree: parseInt(degree, 10) });
+      this.setState({ degree });
     } else {
       setTimeout(() => this.setState(prevState => ({ degree: prevState.degree + 1 })), secondsPerDegree * 1000);
     }
   }
 
   render() {
-    const { className } = this.props;
+    const { className, secondsPerDegree } = this.props;
     const { degree } = this.state;
 
     return (
-      <svg width="600" transform={`rotate(${degree === 0 ? this.props.degree : degree})`} height="141" viewBox="0 0 600 141" fill="none" className={className}>
+      <svg
+        width="600"
+        style={{ transition: `${this.props.degree === degree ? '2s ease' : (`${secondsPerDegree}s linear`)}` }}
+        transform={`rotate(${degree === 0 ? this.props.degree : degree})`}
+        height="141"
+        viewBox="0 0 600 141"
+        fill="none"
+        className={className}
+      >
         <g>
           <rect x="1.5" y="1.5" width="97" height="97" transform="translate(20.7107 20.7107)" fill="#FFD550" stroke="#FFE082" strokeWidth="3" />
           <rect x="1.5" y="1.5" width="97" height="97" transform="translate(0 70.7107) rotate(-45)" fill="#FFCA26" stroke="#FFE082" strokeWidth="3" />
@@ -40,7 +48,8 @@ Sun.defaultProps = {
 
 Sun.propTypes = {
   className: PropTypes.string,
-  degree: PropTypes.number.isRequired
+  degree: PropTypes.number.isRequired,
+  secondsPerDegree: PropTypes.number.isRequired
 };
 
 export default Sun;

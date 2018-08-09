@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const { argv } = require('yargs');
+const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -41,6 +42,17 @@ const config = {
           loader: 'css-loader',
           options: {
             minimize: isProduction
+          }
+        },
+        {
+          loader: 'postcss-loader',
+          options: {
+            plugins: [
+              autoprefixer({
+                browsers: ['ie >= 11', 'last 4 version']
+              })
+            ],
+            sourceMap: true
           }
         },
         'resolve-url-loader',
