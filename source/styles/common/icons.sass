@@ -19,9 +19,37 @@
     stroke: $icon-error
     stroke-width: .2
   &__circle
-    animation: iconCircleVisible 1s ease
+    animation: iconErrorCircle 3s ease
   &__slash, &__back-slash
-    animation: iconSlashVisible 1s ease
+    animation: iconErrorSlash 3s ease
+
+@keyframes iconErrorCircle
+  0%
+    stroke-dasharray: 0 13
+  50%
+    stroke-dasharray: 13 13
+  80%
+    transform: translateY(0)
+    opacity: 1
+    clip-path: polygon(105% -5%, 105% 105%, -5% 105%, -5% -5%)
+  100%
+    transform: translateY(1px)
+    opacity: 0
+    clip-path: polygon(100% 0, 100% -0%, 0 100%, 0 100%)
+
+@keyframes iconErrorSlash
+  0%
+    stroke-dasharray: 0 3
+  50%
+    stroke-dasharray: 3 3
+  80%
+    transform: translateY(0)
+    opacity: 1
+    clip-path: polygon(105% -5%, 105% 105%, -5% 105%, -5% -5%)
+  100%
+    transform: translateY(1px)
+    opacity: 0
+    clip-path: polygon(100% 0, 100% -0%, 0 100%, 0 100%)
 
 @keyframes iconCircleVisible
   0%
@@ -54,6 +82,7 @@
     transform: translateY(1px)
     opacity: 0
     clip-path: polygon(100% 0, 100% -0%, 0 100%, 0 100%)
+
 
 .icon-spinner
   &__back-circle

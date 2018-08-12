@@ -44,6 +44,8 @@
     animation: 1s ease messageAppearanceVisible
   &__message[data-status="LOADING"]
     animation: none
+  &__message[data-status="FAILURE"]
+    animation: 3s ease messageAppearanceError
   &__mark
     width: 100px
 
@@ -59,6 +61,24 @@
 
 @keyframes messageAppearanceHidden
   0%
+    transform: translateY(0)
+    opacity: 1
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 25%)
+  100%
+    transform: translateY(50px)
+    opacity: 0
+    clip-path: polygon(100% 0, 100% -0%, 0 100%, 0 100%)
+
+@keyframes messageAppearanceError
+  0%
+    transform: translateY(-50px)
+    opacity: 0
+    clip-path: polygon(100% 0, 100% 20%, 0 100%, 0 80%)
+  20%
+    transform: translateY(0)
+    opacity: 1
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 25%)
+  80%
     transform: translateY(0)
     opacity: 1
     clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 25%)

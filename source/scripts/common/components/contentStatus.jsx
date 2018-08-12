@@ -51,7 +51,7 @@ class ContentStatus extends PureComponent {
     return (
       status[index] === STATUS_SUCCESS
         ? <div className="info-status__mark"> <SuccessIcon circleHidden={nameCircle} slashHidden={nameSlash} /> </div>
-        : <div className="info-status__mark"> <ErrorIcon circleHidden={nameCircle} slashHidden={nameSlash} /> </div>
+        : <div className="info-status__mark"> <ErrorIcon /> </div>
     );
   }
 
