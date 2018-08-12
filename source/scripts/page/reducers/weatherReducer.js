@@ -5,8 +5,8 @@ import {
 
 import {
   SUCCESS_CODE,
-  MESSAGE_LOADING,
-  MESSAGE_SUCCESS
+  MESSAGE_SUCCESS_WEATHER,
+  MESSAGE_LOADING_WEATHER
 } from '../../constants/settingsPage';
 
 import {
@@ -19,10 +19,12 @@ import {
 import { get } from '../../common/utils/lodash';
 
 const initialState = {
-  code: null,
-  status: STATUS_DEFAULT,
-  message: null,
-  weatherData: null
+  weatherData: null,
+  weatherInfo: {
+    code: null,
+    status: STATUS_DEFAULT,
+    message: null
+  }
 };
 
 export function getWeatherDataReducer(state = initialState, { type, response }) {
@@ -32,24 +34,30 @@ export function getWeatherDataReducer(state = initialState, { type, response }) 
     case PENDING_WEATHER_DATA:
       return {
         ...state,
-        status: STATUS_LOADING,
-        message: MESSAGE_LOADING
+        weatherInfo: {
+          status: STATUS_LOADING,
+          message: MESSAGE_LOADING_WEATHER
+        }
       };
 
     case GET_WEATHER_DATA:
       return {
         ...state,
-        code,
-        status: code === SUCCESS_CODE ? STATUS_SUCCESS : STATUS_FAILURE,
-        message: code === SUCCESS_CODE ? MESSAGE_SUCCESS : response.message,
+        weatherInfo: {
+          code,
+          status: code === SUCCESS_CODE ? STATUS_SUCCESS : STATUS_FAILURE,
+          message: code === SUCCESS_CODE ? MESSAGE_SUCCESS_WEATHER : response.message
+        },
         weatherData: code === SUCCESS_CODE ? response : null
       };
 
     case STATUS_DEFAULT:
       return {
         ...state,
-        message: null,
-        status: STATUS_DEFAULT
+        weatherInfo: {
+          message: null,
+          status: STATUS_DEFAULT
+        }
       };
 
     default:

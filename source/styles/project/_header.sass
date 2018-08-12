@@ -1,8 +1,8 @@
 .header
   height: 100vh
-  //transition: 3s ease
+  transition: 3s ease
   &__form
-    width: 100vw
+    width: calc(100vw - 6px)
     *
       box-shadow: none !important
       color: #999999 !important
@@ -14,15 +14,17 @@
   .Select-control
     border: 0
     box-shadow: none !important
-    border-radius: 0
   .Select-menu-outer
     border: none
     border-top: 1px solid #999999
 
+.Select-control
+  border-radius: 0 !important
+
 .scene-object
   *
     position: absolute
-    bottom: 145px
+    bottom: 143px
   svg
     width: auto
   &__sea-back
@@ -31,14 +33,14 @@
     width: 102vw
     margin-left: -1vw
     background: $sea-back
-    animation: infinite 3s linear backSea
+    animation: 3s linear backSea infinite
   &__sea-front
     bottom: -12%
     height: 150px
     width: 102vw
     margin-left: -1vw
     background: $sea-front
-    animation: infinite 4s linear frontSea
+    animation: 4s linear frontSea infinite
   &__ground
     bottom: 0
     margin-left: 7.5vw
@@ -126,6 +128,7 @@
     height: 7vw
     right: 50vw
     transform-origin: right center
+    transition: 3s ease
 
 
 @keyframes backSea

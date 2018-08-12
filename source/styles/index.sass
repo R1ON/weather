@@ -1,10 +1,5 @@
 @import "config/index"
 
-@import "common/contentStatus"
-@import "common/icons"
-
-@import "project/index"
-
 body
   overflow-x: hidden
   overflow-y: scroll
@@ -29,3 +24,6 @@ body
   background-color: lighten($scroll-front, 10%)
 ::-webkit-resizer
   background-color: $scroll-front
+
+@import "common/index"
+@import "project/index"

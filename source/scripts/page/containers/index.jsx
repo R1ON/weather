@@ -26,10 +26,8 @@ class PageContainer extends Component {
     geolocation.getCurrentPosition(({ coords }) => getWeatherDataByCoords(coords.latitude, coords.longitude));
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { weatherData, geonamesData, getGeonamesByCoords } = nextProps;
-
-    const nextCityName = get(nextProps.weatherData, 'name', null);
+  componentWillReceiveProps({ weatherData, geonamesData, getGeonamesByCoords }) {
+    const nextCityName = get(weatherData, 'name', null);
     const prevCityName = get(this.props.weatherData, 'name', null);
 
     if (prevCityName !== nextCityName) {
@@ -58,10 +56,13 @@ class PageContainer extends Component {
   }
 
   render() {
-    const { getWeatherDataByCity, status, message } = this.props;
+    const { getWeatherDataByCity, weatherInfo, geonamesInfo } = this.props;
 
     return (
-      <ContentStatus status={status} message={message}>
+      <ContentStatus
+        status={[weatherInfo.status, geonamesInfo.status]}
+        message={[weatherInfo.message, geonamesInfo.message]}
+      >
         <HeaderWrapper className="header" time={this.time}>
           <HeaderComponent time={this.time} />
           <Form getWeatherDataByCity={getWeatherDataByCity} />
@@ -72,7 +73,6 @@ class PageContainer extends Component {
 }
 
 PageContainer.defaultProps = {
-  message: null,
   weatherData: null,
   geonamesData: null
 };
@@ -81,8 +81,8 @@ PageContainer.propTypes = {
   getWeatherDataByCity: PropTypes.func.isRequired,
   getWeatherDataByCoords: PropTypes.func.isRequired,
   getGeonamesByCoords: PropTypes.func.isRequired,
-  status: PropTypes.string.isRequired,
-  message: PropTypes.string,
+  weatherInfo: PropTypes.object.isRequired,
+  geonamesInfo: PropTypes.object.isRequired,
   weatherData: PropTypes.object,
   geonamesData: PropTypes.object
 };

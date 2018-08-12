@@ -9,14 +9,14 @@
     background: rgba(0, 0, 0, .5)
     z-index: 100
     animation: opacityVisible .5s ease
-  &__overlay:not([data-status="LOADING"])::after
+  &__overlay[data-status="SUCCESS"]::after
     animation: opacityHidden .5s ease
     animation-delay: 2.5s
   &__info
-    position: absolute
+    position: relative
     left: 50%
-    top: 50%
-    transform: translate(-50%, -50%)
+    top: -70vh
+    transform: translateX(-50%)
     z-index: 101
 
 @keyframes opacityVisible
@@ -41,22 +41,24 @@
     margin-bottom: 10px
     white-space: nowrap
     color: white
-    animation: 3s ease messageAppearance
+    animation: 1s ease messageAppearanceVisible
   &__message[data-status="LOADING"]
     animation: none
   &__mark
     width: 100px
 
-@keyframes messageAppearance
+@keyframes messageAppearanceVisible
   0%
     transform: translateY(-50px)
     opacity: 0
     clip-path: polygon(100% 0, 100% 20%, 0 100%, 0 80%)
-  20%
+  100%
     transform: translateY(0)
     opacity: 1
     clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 25%)
-  80%
+
+@keyframes messageAppearanceHidden
+  0%
     transform: translateY(0)
     opacity: 1
     clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 25%)

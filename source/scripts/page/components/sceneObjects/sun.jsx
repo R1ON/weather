@@ -10,23 +10,18 @@ class Sun extends Component {
     };
   }
 
-  componentWillUpdate({ degree, secondsPerDegree }) {
-    if (!this.state.degree) {
-      this.setState({ degree });
-    } else {
-      setTimeout(() => this.setState(prevState => ({ degree: prevState.degree + 1 })), secondsPerDegree * 1000);
-    }
+  componentWillMount() {
+    setTimeout(() => this.setState({ degree: this.props.degree }), 4);
   }
 
   render() {
-    const { className, secondsPerDegree } = this.props;
+    const { className } = this.props;
     const { degree } = this.state;
 
     return (
       <svg
         width="600"
-        style={{ transition: `${this.props.degree === degree ? '2s ease' : (`${secondsPerDegree}s linear`)}` }}
-        transform={`rotate(${degree === 0 ? this.props.degree : degree})`}
+        transform={`rotate(${degree})`}
         height="141"
         viewBox="0 0 600 141"
         fill="none"
@@ -48,8 +43,7 @@ Sun.defaultProps = {
 
 Sun.propTypes = {
   className: PropTypes.string,
-  degree: PropTypes.number.isRequired,
-  secondsPerDegree: PropTypes.number.isRequired
+  degree: PropTypes.number.isRequired
 };
 
 export default Sun;

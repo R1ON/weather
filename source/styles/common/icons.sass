@@ -6,10 +6,10 @@
     stroke: $icon-success
     stroke-width: .2
   &__circle
-    animation: iconCircle 3s ease
+    animation: iconCircleVisible 1s ease
   &__slash,
   &__back-slash
-    animation: iconShash 3s ease
+    animation: iconSlashVisible 1s ease
 
 .icon-error
   &__circle,
@@ -19,16 +19,18 @@
     stroke: $icon-error
     stroke-width: .2
   &__circle
-    animation: iconCircle 3s ease
+    animation: iconCircleVisible 1s ease
   &__slash, &__back-slash
-    animation: iconShash 3s ease
+    animation: iconSlashVisible 1s ease
 
-@keyframes iconCircle
+@keyframes iconCircleVisible
   0%
     stroke-dasharray: 0 13
-  50%
+  100%
     stroke-dasharray: 13 13
-  80%
+
+@keyframes iconCircleHidden
+  0%
     transform: translateY(0)
     opacity: 1
     clip-path: polygon(105% -5%, 105% 105%, -5% 105%, -5% -5%)
@@ -37,12 +39,14 @@
     opacity: 0
     clip-path: polygon(100% 0, 100% -0%, 0 100%, 0 100%)
 
-@keyframes iconShash
+@keyframes iconSlashVisible
   0%
     stroke-dasharray: 0 3
-  50%
+  100%
     stroke-dasharray: 3 3
-  80%
+
+@keyframes iconSlashHidden
+  0%
     transform: translateY(0)
     opacity: 1
     clip-path: polygon(105% -5%, 105% 105%, -5% 105%, -5% -5%)

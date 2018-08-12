@@ -14,6 +14,7 @@ class HeaderContainer extends Component {
 
   componentWillReceiveProps({ time: { hours } }) {
     if (hours !== this.props.time.hours) {
+      // оверлей наслаивается на фон, получается ужасный переход
       // делать анимацию после того, как статус стал DEFAULT
       // или что-нибудь сделать с оверлеем, из-за него все очень плохо
       if (hours >= 0 && hours < 6) {
