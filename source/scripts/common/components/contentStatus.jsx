@@ -23,9 +23,9 @@ class ContentStatus extends PureComponent {
     this.iconAfterLoad = this.iconAfterLoad.bind(this);
   }
 
-  componentWillUpdate(nextProps) {
-    const allRequestsComplete = nextProps.status.map(element => element === STATUS_SUCCESS);
-    const allRequestsDefault = nextProps.status.map(element => element === STATUS_DEFAULT);
+  componentWillUpdate({ status }) {
+    const allRequestsComplete = status.map(element => element === STATUS_SUCCESS);
+    const allRequestsDefault = status.map(element => element === STATUS_DEFAULT);
 
     if (every(allRequestsComplete)) {
       setTimeout(() => this.setState({

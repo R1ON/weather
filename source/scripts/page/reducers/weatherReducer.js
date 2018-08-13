@@ -48,7 +48,7 @@ export function getWeatherDataReducer(state = initialState, { type, response }) 
           status: code === SUCCESS_CODE ? STATUS_SUCCESS : STATUS_FAILURE,
           message: code === SUCCESS_CODE ? MESSAGE_SUCCESS_WEATHER : response.message
         },
-        weatherData: code === SUCCESS_CODE ? response : null
+        weatherData: response
       };
 
     case STATUS_DEFAULT:

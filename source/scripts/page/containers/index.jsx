@@ -56,16 +56,17 @@ class PageContainer extends Component {
   }
 
   render() {
-    const { getWeatherDataByCity, weatherInfo, geonamesInfo } = this.props;
+    const { getWeatherDataByCity, weatherData, weatherInfo, geonamesInfo } = this.props;
+    const code = get(weatherData, 'cod', null);
 
     return (
       <ContentStatus
         status={[weatherInfo.status, geonamesInfo.status]}
         message={[weatherInfo.message, geonamesInfo.message]}
       >
-        <HeaderWrapper className="header" time={this.time}>
+        <HeaderWrapper code={code} className="header" time={this.time}>
           <HeaderComponent time={this.time} />
-          <Form getWeatherDataByCity={getWeatherDataByCity} />
+          <Form code={code} status={[weatherInfo.status, geonamesInfo.status]} getWeatherDataByCity={getWeatherDataByCity} />
         </HeaderWrapper>
       </ContentStatus>
     );

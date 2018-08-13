@@ -28,13 +28,13 @@ class AsyncSearchInput extends Component {
 
   render() {
     const { value } = this.state;
-    const { getCities } = this.props;
+    const { getCities, disabled } = this.props;
 
     return (
       <div className="header__form">
         <Async
+          disabled={disabled}
           onBlurResetsInput={false}
-          onCloseResetsInput={false}
           onSelectResetsInput={false}
           placeholder="Выберите город"
           searchPromptText="Начните вводить для поиска"
@@ -53,7 +53,8 @@ class AsyncSearchInput extends Component {
 
 AsyncSearchInput.propTypes = {
   getCities: PropTypes.func.isRequired,
-  submitForm: PropTypes.func.isRequired
+  submitForm: PropTypes.func.isRequired,
+  disabled: PropTypes.bool.isRequired
 };
 
 export default AsyncSearchInput;

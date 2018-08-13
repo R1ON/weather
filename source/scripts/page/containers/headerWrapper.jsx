@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { isEqual } from '../../common/utils/lodash';
+import { SUCCESS_CODE } from '../../constants/settingsPage';
 
 class HeaderContainer extends Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class HeaderContainer extends Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    return !isEqual(nextProps.time, this.props.time);
+    return !isEqual(nextProps.time, this.props.time) || nextProps.code !== SUCCESS_CODE;
   }
 
   render() {
