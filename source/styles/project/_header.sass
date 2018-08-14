@@ -62,17 +62,17 @@
     height: 200px
     background-repeat: repeat-x
   &__short-cloud-top
-    top: 10vh
+    top: 15vh
     background-image: url(../images/shortCloud.svg)
     animation: 15s floatingShortClouds linear infinite
   &__short-cloud-bottom
-    top: 30vh
+    top: 35vh
     background-image: url(../images/shortCloud.svg)
-    animation: 25s floatingShortClouds linear infinite
+    animation: 10s floatingShortClouds linear infinite
   &__long-cloud-top
-    top: 20vh
+    top: 25vh
     background-image: url(../images/longCloud.svg)
-    animation: 15s floatingLongClouds linear infinite
+    animation: 10s floatingLongClouds linear infinite
   &__gray-mountain-left
     left: 10vw
     height: 13vw
@@ -129,11 +129,10 @@
     height: 5vw
   &__sun,
   &__moon
-    height: 7vw
+    height: 5vw
     right: 50vw
     transform-origin: right center
     transition: 3s ease
-
 
 @keyframes backSea
   0%
@@ -155,10 +154,10 @@
   100%
     transform: rotate(0deg)
 
-@keyframes floatingLongClouds
-  100%
-    background-position-x: 44vw
-
 @keyframes floatingShortClouds
   100%
-    background-position-x: 32.3vw
+    background-position-x: 440px
+
+@keyframes floatingLongClouds
+  100%
+    background-position-x: 600px

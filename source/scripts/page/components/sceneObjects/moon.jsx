@@ -26,10 +26,9 @@ class Moon extends Component {
 
     return (
       <svg
-        width="350"
         transform={`rotate(${degree})`}
         height="100"
-        viewBox="0 0 350 100"
+        viewBox={`0 0 ${window.innerWidth * 0.6} 141`}
         fill="none"
         className={className}
       >

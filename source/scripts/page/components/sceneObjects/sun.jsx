@@ -29,10 +29,9 @@ class Sun extends Component {
 
     return (
       <svg
-        width="600"
         transform={`rotate(${degree})`}
         height="141"
-        viewBox="0 0 600 141"
+        viewBox={`0 0 ${window.innerWidth * 0.6} 141`}
         fill="none"
         className={className}
       >
