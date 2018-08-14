@@ -11,7 +11,16 @@ class Sun extends Component {
   }
 
   componentWillMount() {
+    // Необходимо, чтобы degree сначала был на 0, а спустя время утановилось
+    // нормальное значение, иначе анимация на rotate не будет
     setTimeout(() => this.setState({ degree: this.props.degree }), 4);
+  }
+
+  componentWillUpdate({ degree }) {
+    // Если вводится другой город, необходимо обновить стейт
+    if (degree !== this.props.degree) {
+      this.setState({ degree });
+    }
   }
 
   render() {
