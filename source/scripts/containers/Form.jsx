@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 
 import axios from 'axios';
 
-import AsyncSearchInput from '../components/asyncSearchInput';
+import AsyncSearchInput from '../components/AsyncSearchInput';
 
-import { every } from '../../common/utils/lodash';
+import { every } from '../common/utils/lodash';
 
-import { URL_GEOCODE, FORMAT, LANGUAGE_DATA } from '../../constants/settingsAPI';
-import { SUCCESS_CODE, DISPATCH_DEFAULT_TIME } from '../../constants/settingsPage';
-import { STATUS_SUCCESS } from '../../constants/status';
+import { URL_GEOCODE, FORMAT, LANGUAGE_DATA } from '../constants/settingsAPI';
+import { SUCCESS_CODE, DISPATCH_DEFAULT_TIME } from '../constants/settingsPage';
+import { STATUS_SUCCESS } from '../constants/status';
 
 class FormContainer extends PureComponent {
   constructor(props) {
@@ -27,6 +27,7 @@ class FormContainer extends PureComponent {
   componentWillUpdate({ status, code }) {
     const allRequestsComplete = status.map(element => element === STATUS_SUCCESS);
 
+    // Дизейблит инпут до тех пор, пока нет данных
     if (every(allRequestsComplete) || code !== SUCCESS_CODE) {
       setTimeout(() => this.setState({ disabled: false }), DISPATCH_DEFAULT_TIME);
     }

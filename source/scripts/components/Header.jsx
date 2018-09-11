@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import GrayMountain from './sceneObjects/grayMountain';
-import BigDarkMountain from './sceneObjects/bigDarkMountain';
-import SmallDarkMountain from './sceneObjects/smallDarkMountain';
-import BlueMountain from './sceneObjects/blueMountain';
+import GrayMountain from './sceneObjects/GrayMountain';
+import BigDarkMountain from './sceneObjects/BigDarkMountain';
+import SmallDarkMountain from './sceneObjects/SmallDarkMountain';
+import BlueMountain from './sceneObjects/BlueMountain';
 
-import Tree from './sceneObjects/tree';
-import Home from './sceneObjects/home';
-import Sun from './sceneObjects/sun';
-import Moon from './sceneObjects/moon';
+import Tree from './sceneObjects/Tree';
+import Home from './sceneObjects/Home';
+import Sun from './sceneObjects/Sun';
+import Moon from './sceneObjects/Moon';
 
-import { isEqual } from '../../common/utils/lodash';
+import { isEqual } from '../common/utils/lodash';
 import {
   SECONDS_PER_DAY,
   SECONDS_PER_HOUR,
   SECONDS_PER_MINUTE,
   SEMICIRCLE_DEGREES
-} from '../../constants/settingsPage';
+} from '../constants/settingsPage';
 
 class HeaderComponent extends Component {
   shouldComponentUpdate(nextProps) {

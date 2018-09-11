@@ -5,7 +5,9 @@ export const MESSAGE_SUCCESS_WEATHER = 'Данные о погоды получ�
 
 export const MESSAGE_LOADING_GEONAMES = 'Получение данных о времени';
 export const MESSAGE_SUCCESS_GEONAMES = 'Данные о времени получены';
+
 export const DISPATCH_DEFAULT_TIME = 2900;
+export const SELECT_FETCH_TIME = 500;
 
 // export const FORMAT_TIME = 'HH:mm:ss';
 

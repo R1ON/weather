@@ -2,9 +2,9 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import SuccessIcon from './icons/success';
-import ErrorIcon from './icons/error';
-import SpinnerIcon from './icons/spinner';
+import SuccessIcon from './icons/Success';
+import ErrorIcon from './icons/Error';
+import SpinnerIcon from './icons/Spinner';
 
 import { every } from '../../common/utils/lodash';
 

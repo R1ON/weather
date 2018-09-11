@@ -1,18 +1,18 @@
 import {
   GET_GEONAMES_DATA,
   PENDING_GEONAMES_DATA
-} from '../../constants/types';
+} from '../constants/types';
 
 import {
   MESSAGE_LOADING_GEONAMES,
   MESSAGE_SUCCESS_GEONAMES
-} from '../../constants/settingsPage';
+} from '../constants/settingsPage';
 
 import {
   STATUS_DEFAULT,
   STATUS_LOADING,
   STATUS_SUCCESS
-} from '../../constants/status';
+} from '../constants/status';
 
 const initialState = {
   geonamesData: null,
@@ -23,7 +23,7 @@ const initialState = {
   }
 };
 
-export function getGeonamesDataReducer(state = initialState, { type, geonamesData }) {
+const getGeonamesDataReducer = (state = initialState, { type, geonamesData }) => {
   switch (type) {
     case PENDING_GEONAMES_DATA:
       return {
@@ -56,4 +56,6 @@ export function getGeonamesDataReducer(state = initialState, { type, geonamesDat
     default:
       return state;
   }
-}
+};
+
+export default getGeonamesDataReducer;

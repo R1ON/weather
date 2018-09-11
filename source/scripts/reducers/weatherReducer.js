@@ -1,22 +1,22 @@
 import {
   GET_WEATHER_DATA,
   PENDING_WEATHER_DATA
-} from '../../constants/types';
+} from '../constants/types';
 
 import {
   SUCCESS_CODE,
   MESSAGE_SUCCESS_WEATHER,
   MESSAGE_LOADING_WEATHER
-} from '../../constants/settingsPage';
+} from '../constants/settingsPage';
 
 import {
   STATUS_LOADING,
   STATUS_DEFAULT,
   STATUS_FAILURE,
   STATUS_SUCCESS
-} from '../../constants/status';
+} from '../constants/status';
 
-import { get } from '../../common/utils/lodash';
+import { get } from '../common/utils/lodash';
 
 const initialState = {
   weatherData: null,
@@ -27,7 +27,7 @@ const initialState = {
   }
 };
 
-export function getWeatherDataReducer(state = initialState, { type, response }) {
+const getWeatherDataReducer = (state = initialState, { type, response }) => {
   const code = get(response, 'cod', null);
 
   switch (type) {
@@ -63,4 +63,6 @@ export function getWeatherDataReducer(state = initialState, { type, response }) 
     default:
       return state;
   }
-}
+};
+
+export default getWeatherDataReducer;

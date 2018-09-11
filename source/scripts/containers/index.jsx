@@ -3,20 +3,20 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import moment from 'moment';
 
-import Form from './form';
-import HeaderWrapper from './headerWrapper';
+import Form from './Form';
+import HeaderWrapper from './HeaderWrapper';
 
-import { get } from '../../common/utils/lodash';
-import ContentStatus from '../../common/components/contentStatus';
+import { get } from '../common/utils/lodash';
+import ContentStatus from '../common/components/ContentStatus';
 
 import {
   getWeatherDataByCoordsAction,
   getWeatherDataByCityAction
 } from '../actions/weatherActions';
 
-import { getGeonamesByCoordsAction } from '../actions/geonamesAction';
+import getGeonamesByCoordsAction from '../actions/geonamesActions';
 
-import HeaderComponent from '../components/header';
+import HeaderComponent from '../components/Header';
 
 class PageContainer extends Component {
   componentWillMount() {
@@ -66,7 +66,11 @@ class PageContainer extends Component {
       >
         <HeaderWrapper code={code} className="header" time={this.time}>
           <HeaderComponent time={this.time} />
-          <Form code={code} status={[weatherInfo.status, geonamesInfo.status]} getWeatherDataByCity={getWeatherDataByCity} />
+          <Form
+            code={code}
+            status={[weatherInfo.status, geonamesInfo.status]}
+            getWeatherDataByCity={getWeatherDataByCity}
+          />
         </HeaderWrapper>
       </ContentStatus>
     );
@@ -88,10 +92,8 @@ PageContainer.propTypes = {
   geonamesData: PropTypes.object
 };
 
-const mapStateToProps = ({ pageReducers }) => {
-  const { getWeatherDataReducer, getGeonamesDataReducer } = pageReducers;
-
-  return { ...getWeatherDataReducer, ...getGeonamesDataReducer };
+const mapStateToProps = ({ getWeatherData, getGeonamesData }) => {
+  return { ...getWeatherData, ...getGeonamesData };
 };
 
 const mapDispatchToProps = dispatch => ({

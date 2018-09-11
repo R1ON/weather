@@ -33,18 +33,18 @@ class AsyncSearchInput extends Component {
     return (
       <div className="header__form">
         <Async
+          value={value}
+          valueKey="name"
           disabled={disabled}
-          onBlurResetsInput={false}
-          onSelectResetsInput={false}
+          loadOptions={getCities}
           placeholder="Выберите город"
           searchPromptText="Начните вводить для поиска"
           loadingPlaceholder="Загрузка..."
-          value={value}
-          valueKey="name"
-          onChange={this.updateValue}
-          loadOptions={getCities}
           optionRenderer={this.renderOption}
           valueRenderer={this.renderValue}
+          onChange={this.updateValue}
+          onBlurResetsInput={false}
+          onSelectResetsInput={false}
         />
       </div>
     );
