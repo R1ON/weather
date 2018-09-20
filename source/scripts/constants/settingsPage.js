@@ -1,10 +1,7 @@
 export const SUCCESS_CODE = 200;
 
-export const MESSAGE_LOADING_WEATHER = 'Получение данных о погоде';
-export const MESSAGE_SUCCESS_WEATHER = 'Данные о погоды получены';
-
-export const MESSAGE_LOADING_GEONAMES = 'Получение данных о времени';
-export const MESSAGE_SUCCESS_GEONAMES = 'Данные о времени получены';
+export const MESSAGE_LOADING = 'Получение данных о погоде';
+export const MESSAGE_SUCCESS = 'Данные о погоде получены';
 
 export const DISPATCH_DEFAULT_TIME = 2900;
 export const SELECT_FETCH_TIME = 500;

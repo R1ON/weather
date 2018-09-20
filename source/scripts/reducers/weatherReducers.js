@@ -1,12 +1,15 @@
+import { get } from '../common/utils/lodash';
+
 import {
+  PENDING_DATA,
   GET_WEATHER_DATA,
-  PENDING_WEATHER_DATA
+  GET_GEONAMES_DATA
 } from '../constants/types';
 
 import {
   SUCCESS_CODE,
-  MESSAGE_SUCCESS_WEATHER,
-  MESSAGE_LOADING_WEATHER
+  MESSAGE_LOADING,
+  MESSAGE_SUCCESS
 } from '../constants/settingsPage';
 
 import {
@@ -16,10 +19,10 @@ import {
   STATUS_SUCCESS
 } from '../constants/status';
 
-import { get } from '../common/utils/lodash';
 
 const initialState = {
   weatherData: null,
+  geonamesData: null,
   weatherInfo: {
     code: null,
     status: STATUS_DEFAULT,
@@ -27,28 +30,34 @@ const initialState = {
   }
 };
 
-const getWeatherDataReducer = (state = initialState, { type, response }) => {
+const weatherDataReducer = (state = initialState, { type, response }) => {
   const code = get(response, 'cod', null);
 
   switch (type) {
-    case PENDING_WEATHER_DATA:
+    case PENDING_DATA:
       return {
         ...state,
         weatherInfo: {
           status: STATUS_LOADING,
-          message: MESSAGE_LOADING_WEATHER
+          message: MESSAGE_LOADING
         }
       };
 
     case GET_WEATHER_DATA:
       return {
         ...state,
+        weatherData: response
+      };
+
+    case GET_GEONAMES_DATA:
+      return {
+        ...state,
         weatherInfo: {
           code,
           status: code === SUCCESS_CODE ? STATUS_SUCCESS : STATUS_FAILURE,
-          message: code === SUCCESS_CODE ? MESSAGE_SUCCESS_WEATHER : response.message
+          message: code === SUCCESS_CODE ? MESSAGE_SUCCESS : response.message
         },
-        weatherData: response
+        geonamesData: response.data
       };
 
     case STATUS_DEFAULT:
@@ -65,4 +74,4 @@ const getWeatherDataReducer = (state = initialState, { type, response }) => {
   }
 };
 
-export default getWeatherDataReducer;
+export default weatherDataReducer;

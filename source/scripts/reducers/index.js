@@ -1,9 +1,7 @@
 import { combineReducers } from 'redux';
 
-import getWeatherDataReducer from './geonamesReducer';
-import getGeonamesDataReducer from './weatherReducer';
+import weatherDataReducer from './weatherReducers';
 
 export default combineReducers({
-  getWeatherData: getWeatherDataReducer,
-  getGeonamesData: getGeonamesDataReducer
+  weatherData: weatherDataReducer
 });
