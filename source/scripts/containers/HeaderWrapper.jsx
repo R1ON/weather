@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Children, cloneElement, Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { isEqual } from '../common/utils/lodash';
@@ -35,12 +35,14 @@ class HeaderContainer extends Component {
   }
 
   render() {
-    const { children, className } = this.props;
     const { background } = this.state;
+    const { children, className, status, code, time } = this.props;
 
     return (
       <header className={className} style={{ background }}>
-        {children}
+        {Children.map(children, element => (
+          cloneElement(element, { status, code, time })
+        ))}
       </header>
     );
   }
@@ -48,11 +50,15 @@ class HeaderContainer extends Component {
 
 HeaderContainer.defaultProps = {
   className: null,
-  time: {}
+  time: {},
+  status: null,
+  code: null
 };
 
 HeaderContainer.propTypes = {
   time: PropTypes.object,
+  status: PropTypes.string,
+  code: PropTypes.number,
   className: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.array,

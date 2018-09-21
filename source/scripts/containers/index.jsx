@@ -51,12 +51,8 @@ class PageContainer extends Component {
     return (
       <ContentStatus status={weatherInfo.status} message={weatherInfo.message}>
         <HeaderWrapper code={code} className="header" time={this.time}>
-          <HeaderComponent time={this.time} />
-          <Form
-            code={code}
-            status={[weatherInfo.status]}
-            getWeatherDataByCity={getWeatherDataByCity}
-          />
+          <HeaderComponent />
+          <Form getWeatherDataByCity={getWeatherDataByCity} />
         </HeaderWrapper>
       </ContentStatus>
     );
