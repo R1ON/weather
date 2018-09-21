@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import GrayMountain from './sceneObjects/GrayMountain';
-import BigDarkMountain from './sceneObjects/BigDarkMountain';
-import SmallDarkMountain from './sceneObjects/SmallDarkMountain';
-import BlueMountain from './sceneObjects/BlueMountain';
-
-import Tree from './sceneObjects/Tree';
-import Home from './sceneObjects/Home';
 import Sun from './sceneObjects/Sun';
 import Moon from './sceneObjects/Moon';
 
@@ -73,25 +66,26 @@ class HeaderComponent extends Component {
         <div className="scene-object__short-cloud-bottom" />
         <div className="scene-object__long-cloud-top" />
 
-        <GrayMountain className="scene-object__gray-mountain-left" />
-        <GrayMountain className="scene-object__gray-mountain-right" />
-        <SmallDarkMountain className="scene-object__small-dark-mountain" />
-        <BigDarkMountain className="scene-object__big-dark-mountain" />
-        <BlueMountain className="scene-object__blue-montain-1" />
-        <BlueMountain className="scene-object__blue-montain-2" />
-        <BlueMountain className="scene-object__blue-montain-3" />
-        <BlueMountain className="scene-object__blue-montain-4" />
+        <div className="scene-object__gray-mountain-left" />
+        <div className="scene-object__gray-mountain-right" />
+        <div className="scene-object__small-gray-mountain" />
+        <div className="scene-object__big-gray-mountain" />
 
-        <Tree className="scene-object__tree-1" />
-        <Tree className="scene-object__tree-2" />
-        <Tree className="scene-object__tree-3" />
-        <Tree className="scene-object__tree-4" />
-        <Tree className="scene-object__tree-5" />
-        <Tree className="scene-object__tree-6" />
-        <Tree className="scene-object__tree-7" />
-        <Tree className="scene-object__tree-8" />
+        <div className="scene-object__blue-mountain-1" />
+        <div className="scene-object__blue-mountain-2" />
+        <div className="scene-object__blue-mountain-3" />
+        <div className="scene-object__blue-mountain-4" />
 
-        <Home className="scene-object__home" />
+        <div className="scene-object__tree-1" />
+        <div className="scene-object__tree-2" />
+        <div className="scene-object__tree-3" />
+        <div className="scene-object__tree-4" />
+        <div className="scene-object__tree-5" />
+        <div className="scene-object__tree-6" />
+        <div className="scene-object__tree-7" />
+        <div className="scene-object__tree-8" />
+
+        <div className="scene-object__home" />
 
         <div className="scene-object__ground" />
         <div className="scene-object__sea-back" />

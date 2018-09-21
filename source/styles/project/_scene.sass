@@ -1,0 +1,148 @@
+@for $i from 1 to 9
+  .scene-object__tree-#{$i}
+    background: url(../images/sceneObjects/tree.svg) no-repeat
+    background-size: contain
+
+@for $i from 1 to 5
+  .scene-object__blue-mountain-#{$i}
+    background: url(../images/sceneObjects/blueMountain.svg) no-repeat
+    background-size: contain
+
+.scene-object
+  *
+    position: absolute
+    bottom: 143px
+    width: 100%
+  &__sea-back
+    bottom: 0
+    height: 120px
+    width: 102vw
+    margin-left: -1vw
+    background: $sea-back
+    animation: 3s linear backSea infinite
+  &__sea-front
+    bottom: -12%
+    height: 150px
+    width: 102vw
+    margin-left: -1vw
+    background: $sea-front
+    animation: 4s linear frontSea infinite
+  &__ground
+    bottom: 0
+    margin-left: 7.5vw
+    border-top-left-radius: 20px
+    border-top-right-radius: 20px
+    height: 145px
+    width: 85vw
+    background: $ground
+  &__short-cloud-top,
+  &__short-cloud-bottom,
+  &__long-cloud-top,
+  &__long-cloud-bottom
+    bottom: 0
+    width: 100vw
+    height: auto
+    background-repeat: repeat-x
+    background-size: 50%
+  //&__short-cloud-top
+  //  top: 15vh
+  //  background-image: url(../images/cloud.svg)
+  //  animation: 5s floatingTopClouds linear infinite
+  //&__long-cloud-top
+  //  top: 20vh
+  //  background-image: url(../images/cloud3.svg)
+  //  animation: 5s floatingMiddleClouds linear infinite
+  //&__short-cloud-bottom
+  //  top: 32vh
+  //  background-image: url(../images/cloud2.svg)
+  //  animation: 10s floatingShortClouds linear infinite
+  &__gray-mountain-left
+    left: 10vw
+    height: 13vw
+    background: url(../images/sceneObjects/grayMountain.svg) no-repeat
+    background-size: contain
+  &__gray-mountain-right
+    right: 7vw
+    height: 18vw
+    transform: scale(-1, 1) skewX(10deg)
+    background: url(../images/sceneObjects/grayMountain.svg) no-repeat
+    background-size: contain
+  &__small-gray-mountain
+    left: 38vw
+    height: 7vw
+    background: url(../images/sceneObjects/smallGrayMountain.svg) no-repeat
+    background-size: contain
+  &__big-gray-mountain
+    left: 45vw
+    height: 10vw
+    background: url(../images/sceneObjects/bigGrayMountain.svg) no-repeat
+    background-size: contain
+  &__blue-mountain-1
+    left: 30vw
+    height: 5vw
+  &__blue-mountain-2
+    left: 21vw
+    height: 7vw
+  &__blue-mountain-3
+    right: 27vw
+    height: 8vw
+    transform: scale(-1, 1)
+  &__blue-muontain-4
+    right: 37vw
+    height: 5vw
+    transform: scale(-1, 1)
+  &__tree-1
+    left: 36.5vw
+    height: 3vw
+  &__tree-2
+    left: 38vw
+    height: 4vw
+  &__tree-3
+    left: 35vw
+    height: 4vw
+  &__tree-4
+    left: 33vw
+    height: 5vw
+  &__tree-5
+    left: 27vw
+    height: 4vw
+  &__tree-6
+    left: 65vw
+    height: 4vw
+  &__tree-7
+    left: 73vw
+    height: 4vw
+  &__tree-8
+    left: 75vw
+    height: 6vw
+  &__home
+    left: 50vw
+    background: url(../images/sceneObjects/home.svg) no-repeat
+    background-size: contain
+    height: 5vw
+  &__sun,
+  &__moon
+    height: 5vw
+    right: 50vw
+    transform-origin: right center
+    transition: transform 3s ease
+
+@keyframes backSea
+  0%
+    transform: rotate(0deg)
+  25%
+    transform: rotate(-1deg) translateY(5px)
+  75%
+    transform: rotate(1deg) translateY(-5px)
+  100%
+    transform: rotate(0deg)
+
+@keyframes frontSea
+  0%
+    transform: rotate(0deg)
+  25%
+    transform: rotate(2deg) translateY(5px)
+  75%
+    transform: rotate(-2deg) translateY(-5px)
+  100%
+    transform: rotate(0deg)
