@@ -2,17 +2,20 @@
   .scene-object__tree-#{$i}
     background: url(../images/sceneObjects/tree.svg) no-repeat
     background-size: contain
+    width: 100%
 
 @for $i from 1 to 5
   .scene-object__blue-mountain-#{$i}
     background: url(../images/sceneObjects/blueMountain.svg) no-repeat
     background-size: contain
+    width: 100%
 
 .scene-object
   *
     position: absolute
     bottom: 143px
-    width: 100%
+  svg
+    width: auto
   &__sea-back
     bottom: 0
     height: 120px
@@ -59,22 +62,26 @@
   &__gray-mountain-left
     left: 10vw
     height: 13vw
+    width: 100%
     background: url(../images/sceneObjects/grayMountain.svg) no-repeat
     background-size: contain
   &__gray-mountain-right
     right: 7vw
     height: 18vw
+    width: 100%
     transform: scale(-1, 1) skewX(10deg)
     background: url(../images/sceneObjects/grayMountain.svg) no-repeat
     background-size: contain
   &__small-gray-mountain
     left: 38vw
     height: 7vw
+    width: 100%
     background: url(../images/sceneObjects/smallGrayMountain.svg) no-repeat
     background-size: contain
   &__big-gray-mountain
     left: 45vw
     height: 10vw
+    width: 100%
     background: url(../images/sceneObjects/bigGrayMountain.svg) no-repeat
     background-size: contain
   &__blue-mountain-1
@@ -120,6 +127,7 @@
     background: url(../images/sceneObjects/home.svg) no-repeat
     background-size: contain
     height: 5vw
+    width: 100%
   &__sun,
   &__moon
     height: 5vw

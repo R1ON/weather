@@ -4,14 +4,9 @@ import PropTypes from 'prop-types';
 import Sun from './sceneObjects/Sun';
 import Moon from './sceneObjects/Moon';
 
-import { isEqual, isEmpty } from '../common/utils/lodash';
+import convertTimeIntoPayload from '../utils/scene';
 
-import {
-  SECONDS_PER_DAY,
-  SECONDS_PER_HOUR,
-  SECONDS_PER_MINUTE,
-  SEMICIRCLE_DEGREES
-} from '../constants/settingsPage';
+import { isEqual } from '../common/utils/lodash';
 
 class HeaderComponent extends Component {
   shouldComponentUpdate(nextProps) {
@@ -21,44 +16,15 @@ class HeaderComponent extends Component {
   render() {
     const { time } = this.props;
 
-    const hasTime = !isEmpty(time);
-
-    // Вычисляем восход, закат и текущее время
-    const sunrise = hasTime && (SECONDS_PER_HOUR * time.sunrise.hours) + (SECONDS_PER_MINUTE * time.sunrise.minutes);
-    const sunset = hasTime && ((SECONDS_PER_HOUR * time.sunset.hours) + (SECONDS_PER_MINUTE * time.sunset.minutes));
-    const currentTime = hasTime && ((SECONDS_PER_HOUR * time.hours) + (SECONDS_PER_MINUTE * time.minutes) + time.seconds);
-
-    // Определяем ночь сейчас или день, в зависимости от этого показываем луну или солнце
-    const isNight = (currentTime < sunrise || currentTime > sunset);
-
-    // Определяем время солнцестояния и количество секунд за 1градус для луны и солнца
-    const solarTime = sunset - sunrise;
-    const secondsPerDegreeForSun = solarTime / SEMICIRCLE_DEGREES || 0;
-    const secondsPerDegreesForMoon = solarTime && ((SECONDS_PER_DAY - solarTime) / SEMICIRCLE_DEGREES);
-
-    // Определяем количество градусов у солнца, у луны оставляем 0
-    let moonDegree = 0;
-    const sunDegree = hasTime ? (
-      (((SECONDS_PER_HOUR * time.hours) + (SECONDS_PER_MINUTE * time.minutes) + time.seconds) - sunrise) / secondsPerDegreeForSun
-    ) : 0;
-
-    // Лунное время до полночи
-    if (hasTime && time.hours <= 23 && currentTime > sunset) {
-      moonDegree = (currentTime - sunset) / secondsPerDegreesForMoon;
-    }
-
-    // Лунное время после полночи
-    if (hasTime && currentTime < sunrise) {
-      moonDegree = (currentTime + (SECONDS_PER_DAY - sunset)) / secondsPerDegreesForMoon;
-    }
+    const timeInfo = convertTimeIntoPayload(time);
 
     return (
       <div className="header__scene scene-object">
-        {hasTime && (
-          isNight ? (
-            <Moon className="scene-object__moon" degree={parseInt(moonDegree, 10)} />
+        {timeInfo.hasTime && (
+          timeInfo.isNight ? (
+            <Moon className="scene-object__moon" degree={parseInt(timeInfo.moonDegree, 10)} />
           ) : (
-            <Sun className="scene-object__sun" degree={parseInt(sunDegree, 10)} />
+            <Sun className="scene-object__sun" degree={parseInt(timeInfo.sunDegree, 10)} />
           )
         )}
 
