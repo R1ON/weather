@@ -48,15 +48,15 @@
     background-size: 50%
   &__short-cloud-top
     top: 15vh
-    background-image: url(../images/cloud.svg)
+    background-image: url(../images/sceneObjects/cloud-1.svg)
     animation: 4s floatingTopClouds ease-in-out infinite
   &__long-cloud-top
     top: 25vh
-    background-image: url(../images/cloud3.svg)
+    background-image: url(../images/sceneObjects/cloud-3.svg)
     animation: 5s floatingMiddleClouds ease-in-out infinite
   &__short-cloud-bottom
     top: 20vh
-    background-image: url(../images/cloud2.svg)
+    background-image: url(../images/sceneObjects/cloud-2.svg)
     animation: 6s floatingBottomClouds ease-in-out infinite
   &__gray-mountain-left
     left: 10vw
@@ -153,3 +153,27 @@
     transform: rotate(-2deg) translateY(-5px)
   100%
     transform: rotate(0deg)
+
+@keyframes floatingTopClouds
+  0%
+    transform: translateX(3vw)
+  50%
+    transform: translateX(5vw)
+  100%
+    transform: translateX(3vw)
+
+@keyframes floatingMiddleClouds
+  0%
+    transform: translateX(20vw)
+  50%
+    transform: translateX(22vw)
+  100%
+    transform: translateX(20vw)
+
+@keyframes floatingBottomClouds
+  0%
+    transform: translateX(40vw)
+  50%
+    transform: translateX(42vw)
+  100%
+    transform: translateX(40vw)

@@ -1,4 +1,4 @@
-import React, { cloneElement } from 'react';
+import React, { cloneElement, Children } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -16,7 +16,9 @@ const ContentStatus = ({ status, message, children }) => {
   );
   return (
     <div data-status={status} className={classNames('content-status', { 'content-status__overlay': status !== STATUS_DEFAULT })}>
-      {cloneElement(children, { status })}
+      {Children.map(children, element => (
+        cloneElement(element, { status })
+      ))}
       {status !== STATUS_DEFAULT && (
         <div className="content-status__info info-status">
           {message && <div className="info-status__message" data-status={status}>{message}</div>}

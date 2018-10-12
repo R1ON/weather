@@ -1,4 +1,4 @@
-import React, { Children, cloneElement, Component } from 'react';
+import React, { cloneElement, Children, Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { isEqual } from '../common/utils/lodash';
@@ -15,9 +15,10 @@ class HeaderContainer extends Component {
 
   componentWillReceiveProps({ time: { hours } }) {
     if (hours !== this.props.time.hours) {
-      // оверлей наслаивается на фон, получается ужасный переход
+      // TODO: оверлей наслаивается на фон, получается ужасный переход
       // делать анимацию после того, как статус стал DEFAULT
       // или что-нибудь сделать с оверлеем, из-за него все очень плохо
+      // upd: вроде из-за черного фона
       if (hours >= 0 && hours < 6) {
         this.setState({ background: '#030f19' });
       } else if (hours >= 6 && hours < 12) {

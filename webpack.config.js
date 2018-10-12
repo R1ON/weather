@@ -63,7 +63,7 @@ const config = {
       use: [{
         loader: 'file-loader',
         options: {
-          name: '/images/[name].[ext]'
+          name: 'images/[name].[ext]'
         }
       }, {
         loader: 'image-webpack-loader',

@@ -6,6 +6,8 @@ import moment from 'moment';
 import Form from './Form';
 import HeaderWrapper from './HeaderWrapper';
 
+import WeatherInfoSection from './WeatherInfoSection';
+
 import { get } from '../common/utils/lodash';
 import ContentStatus from '../common/components/ContentStatus';
 
@@ -54,6 +56,8 @@ class PageContainer extends Component {
           <HeaderComponent />
           <Form getWeatherDataByCity={getWeatherDataByCity} />
         </HeaderWrapper>
+
+        <WeatherInfoSection weatherData={weatherData} />
       </ContentStatus>
     );
   }
