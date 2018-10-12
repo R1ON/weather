@@ -13,7 +13,7 @@ class Sun extends Component {
   componentWillMount() {
     // Необходимо, чтобы degree сначала был на 0, а спустя время утановилось
     // нормальное значение, иначе анимация на rotate не будет
-    setTimeout(() => this.setState({ degree: this.props.degree }), 4);
+    setTimeout(() => this.setState({ degree: this.props.degree }), 50);
   }
 
   componentWillUpdate({ degree }) {
@@ -35,11 +35,9 @@ class Sun extends Component {
         fill="none"
         className={className}
       >
-        <g>
-          <rect x="1.5" y="1.5" width="97" height="97" transform="translate(20.7107 20.7107)" fill="#FFD550" stroke="#FFE082" strokeWidth="3" />
-          <rect x="1.5" y="1.5" width="97" height="97" transform="translate(0 70.7107) rotate(-45)" fill="#FFCA26" stroke="#FFE082" strokeWidth="3" />
-          <circle cx="50" cy="50" r="48.5" transform="translate(20.7107 20.7107)" fill="#FFD85F" stroke="#FFE082" strokeWidth="3" />
-        </g>
+        <rect x="1.5" y="1.5" width="97" height="97" transform="translate(20.7107 20.7107)" fill="#FFD550" stroke="#FFE082" strokeWidth="3" />
+        <rect x="1.5" y="1.5" width="97" height="97" transform="translate(0 70.7107) rotate(-45)" fill="#FFCA26" stroke="#FFE082" strokeWidth="3" />
+        <circle cx="50" cy="50" r="48.5" transform="translate(20.7107 20.7107)" fill="#FFD85F" stroke="#FFE082" strokeWidth="3" />
       </svg>
     );
   }

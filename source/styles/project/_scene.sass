@@ -40,25 +40,24 @@
     background: $ground
   &__short-cloud-top,
   &__short-cloud-bottom,
-  &__long-cloud-top,
-  &__long-cloud-bottom
+  &__long-cloud-top
     bottom: 0
     width: 100vw
     height: auto
     background-repeat: repeat-x
     background-size: 50%
-  //&__short-cloud-top
-  //  top: 15vh
-  //  background-image: url(../images/cloud.svg)
-  //  animation: 5s floatingTopClouds linear infinite
-  //&__long-cloud-top
-  //  top: 20vh
-  //  background-image: url(../images/cloud3.svg)
-  //  animation: 5s floatingMiddleClouds linear infinite
-  //&__short-cloud-bottom
-  //  top: 32vh
-  //  background-image: url(../images/cloud2.svg)
-  //  animation: 10s floatingShortClouds linear infinite
+  &__short-cloud-top
+    top: 15vh
+    background-image: url(../images/cloud.svg)
+    animation: 4s floatingTopClouds ease-in-out infinite
+  &__long-cloud-top
+    top: 25vh
+    background-image: url(../images/cloud3.svg)
+    animation: 5s floatingMiddleClouds ease-in-out infinite
+  &__short-cloud-bottom
+    top: 20vh
+    background-image: url(../images/cloud2.svg)
+    animation: 6s floatingBottomClouds ease-in-out infinite
   &__gray-mountain-left
     left: 10vw
     height: 13vw

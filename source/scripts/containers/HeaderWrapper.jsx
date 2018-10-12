@@ -25,7 +25,7 @@ class HeaderContainer extends Component {
       } else if (hours >= 12 && hours < 18) {
         this.setState({ background: '#3677c3' });
       } else if (hours >= 18 && hours < 24) {
-        this.setState({ background: '#cf538d' });
+        this.setState({ background: '#871263' });
       }
     }
   }

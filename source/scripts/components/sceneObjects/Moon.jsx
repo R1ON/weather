@@ -11,7 +11,7 @@ class Moon extends Component {
   }
 
   componentWillMount() {
-    setTimeout(() => this.setState({ degree: this.props.degree }), 4);
+    setTimeout(() => this.setState({ degree: this.props.degree }), 50);
   }
 
   componentWillUpdate({ degree }) {
